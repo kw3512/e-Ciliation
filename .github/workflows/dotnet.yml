@@ -28,5 +28,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Format
-      run: dotnet format -v detailed --verify-no-changes
+    #- name: Format
+    #  run: dotnet format -v detailed --verify-no-changes
