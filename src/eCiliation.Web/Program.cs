@@ -1,4 +1,6 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using eCiliation.ServiceDefaults;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Aspire service
 builder.AddServiceDefaults();
