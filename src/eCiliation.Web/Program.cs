@@ -20,5 +20,3 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.Run();
-
-//  testing CI pipeline.
