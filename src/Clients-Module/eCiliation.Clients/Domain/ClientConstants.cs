@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace eCiliation.Clients;
+﻿
+namespace eCiliation.Clients.Domain;
 internal static class ClientConstants
 {
   internal const int Min_Client_Description = 2;

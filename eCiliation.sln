@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.Clients.Integrat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.Clients.UnitTests", "src\Clients-Module\eCiliation.Clients.UnitTests\eCiliation.Clients.UnitTests.csproj", "{5EA7464D-7474-4B19-8A90-3F73834DE5A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.SharedKernel", "src\eCiliation.SharedKernel\eCiliation.SharedKernel\eCiliation.SharedKernel.csproj", "{89CBF243-7785-4B3E-92D5-C1F99602CF71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{5EA7464D-7474-4B19-8A90-3F73834DE5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EA7464D-7474-4B19-8A90-3F73834DE5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EA7464D-7474-4B19-8A90-3F73834DE5A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89CBF243-7785-4B3E-92D5-C1F99602CF71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89CBF243-7785-4B3E-92D5-C1F99602CF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89CBF243-7785-4B3E-92D5-C1F99602CF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89CBF243-7785-4B3E-92D5-C1F99602CF71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
