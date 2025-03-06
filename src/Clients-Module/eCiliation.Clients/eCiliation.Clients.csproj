@@ -16,6 +16,10 @@
 
   <ItemGroup>
     <Folder Include="Endpoints\" />
+    <Folder Include="Infrastructure\Data\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Integrations\" />
+    <Folder Include="UseCases\" />
   </ItemGroup>
 
 </Project>
