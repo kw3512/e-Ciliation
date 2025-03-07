@@ -11,11 +11,11 @@ internal class Client
   public string Name { get; private set; } = string.Empty;
   public string? Description { get; private set; }
   public bool IsActive { get; private set; } = true;
-  public DateTime CreatedOn { get; private set; } = DateTime.Now;
+  //public DateTime CreatedOn { get; private set; } = DateTime.Now;
   public CreateStamp CreateStamp { get; private set; }
   public UpdateStamp? UpdateStamp { get; private set; }
 
-  internal Client(Guid id, string clientName, string userId, string? description = default)
+  public Client(Guid id, string clientName, string userId, string? description = default)
   {
     ClientId = Guard.Against.Default(id);
     Guard.Against.NullOrEmpty(clientName);

@@ -10,8 +10,12 @@
     <PackageReference Include="Ardalis.GuardClauses" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup>   
     <ProjectReference Include="..\..\eCiliation.SharedKernel\eCiliation.SharedKernel\eCiliation.SharedKernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="eCiliation.Clients.UnitTests" />
   </ItemGroup>
 
   <ItemGroup>
