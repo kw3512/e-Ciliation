@@ -3,7 +3,7 @@ using FluentAssertions;
 
 namespace eCiliation.Clients.UnitTests;
 
-public class ClientTests
+public class ClientsShould
 {
   private static string _userId = "tUser";
   private static readonly Guid _clientId = Guid.NewGuid();
@@ -12,7 +12,7 @@ public class ClientTests
   private readonly Client _sut = new(_clientId, _clientName, _userId);
 
   [Fact]
-  public void Client_ShouldBeInValidState_WhenInitialized()
+  public void Be_In_ValidState_AfterInitialization()
   {
     // Assert
     _sut.Name.Should().BeEquivalentTo(_clientName);

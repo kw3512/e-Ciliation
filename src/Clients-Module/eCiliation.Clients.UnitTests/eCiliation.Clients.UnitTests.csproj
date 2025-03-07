@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\eCiliation.Clients.Contracts\eCiliation.Clients.Contracts.csproj" />
     <ProjectReference Include="..\eCiliation.Clients\eCiliation.Clients.csproj" />
   </ItemGroup>
 
