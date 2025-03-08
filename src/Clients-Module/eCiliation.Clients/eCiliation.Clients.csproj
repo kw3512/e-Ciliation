@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>   
-    <ProjectReference Include="..\..\eCiliation.SharedKernel\eCiliation.SharedKernel\eCiliation.SharedKernel.csproj" />
+    <ProjectReference Include="..\..\eCiliation.SharedKernel\eCiliation.SharedKernel\eCiliation.SharedKernel.csproj" />   
+    <ProjectReference Include="..\eCiliation.Clients.Contracts\eCiliation.Clients.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

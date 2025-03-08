@@ -2,8 +2,8 @@
 namespace eCiliation.Clients.Domain;
 internal static class ClientConstants
 {
-  internal const int Min_Client_Description = 2;
-  internal const int Max_Client_Description = 100;
-  internal const int Min_Client_Name = 2;
-  internal const int Max_Client_Name = 50;
+  public const int DESCRIPTION_MIN = 2;
+  public const int DESCRIPTION_MAX = 100;
+  public const int NAME_MIN = 2;
+  public const int NAME_MAX = 50;
 }
