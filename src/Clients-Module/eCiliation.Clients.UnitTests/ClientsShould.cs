@@ -24,7 +24,7 @@ public class ClientsShould
     _sut.Description.Should().BeEquivalentTo(_sut.Description);  
   }
 
-  // todo: Test Deacativate()
+  // todo: Test Deactivate()
   // todo: Test SetUpdateStamp()
   // todo: Test expection throw for invalid - client id
   // todo: Test expection throw for invalid - client name

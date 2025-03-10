@@ -11,6 +11,8 @@
   
   <ItemGroup>
     <ProjectReference Include="..\aspire\eCiliation.ServiceDefaults\eCiliation.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Clients-Module\eCiliation.Clients\eCiliation.Clients.csproj" />
+    <ProjectReference Include="..\eCiliation.SharedKernel\eCiliation.SharedKernel\eCiliation.SharedKernel.csproj" />
   </ItemGroup>
 
 </Project>

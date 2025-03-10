@@ -1,0 +1,24 @@
+﻿//using eCiliation.Clients.UseCases.Create;
+//using FluentValidation;
+
+//namespace eCiliation.Clients.UseCases;
+//internal class ExampleCommandValidator : AbstractValidator<ExampleCommand>
+//{
+//  public ExampleCommandValidator()
+//  {
+
+//  }
+//}
+
+// Examples:
+//RuleFor(x => x.EmailAddress)
+// .NotEmpty()
+// .WithMessage("EmailAddress is required.");
+
+//RuleFor(x => x.Quantity)
+//  .GreaterThan(0)
+//  .WithMessage("Quantity must be at least 1.");
+
+//RuleFor(x => x.BookId)
+//  .NotEmpty()
+//  .WithMessage("Not a valid BookId.");

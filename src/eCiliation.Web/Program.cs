@@ -1,8 +1,14 @@
-﻿using eCiliation.ServiceDefaults;
+﻿using System.Reflection;
+using eCiliation.ServiceDefaults;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Serilog;
+using eCiliation.Clients;
+using eCiliation.SharedKernel;
 
+// Create new logger;
+// using enrich to custom format the log events via the configuration file;
+// use sink to write to source 'console'
 var logger = Log.Logger = new LoggerConfiguration()
   .Enrich.FromLogContext()
   .WriteTo.Console()
@@ -15,9 +21,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((_, config) =>
   config.ReadFrom.Configuration(builder.Configuration));
 
-logger.Information("Testing info message just to see the display style :)");
-//builder.Services.AddFastEndpoints()
-//  .SwaggerDocument();
+builder.Services.AddFastEndpoints()
+  .SwaggerDocument();
+
+// Add Module Services
+List<Assembly> mediatRAssemblies = [typeof(Program).Assembly];
+builder.Services.AddClientsModuleServices(builder.Configuration, logger, mediatRAssemblies);
+
+// Set up MediatR
+builder.Services.AddMediatR(cfg =>
+  cfg.RegisterServicesFromAssemblies(mediatRAssemblies.ToArray()));
+builder.Services.AddMediatRLoggingBehavior();
+builder.Services.AddMediatRFluentValidationBehavior();
+
+// Add MediatR Validator
+//builder.Services.AddValidatorsFromAssemblyContaining<AddItemToCartCommandValidator>();
+
+// Add MediatR Domain Event Dispatcher
+//builder.Services.AddScoped<IDomainEventDispatcher, MediatRDomainEventDispatcher>();
 
 // Aspire service
 builder.AddServiceDefaults();
@@ -28,8 +49,8 @@ builder.Services.AddOpenApi();
 var app = builder.Build();
 
 // Pipeline
-//app.UseFastEndpoints()
-  //.UseSwaggerGen();
+app.UseFastEndpoints()
+.UseSwaggerGen();
 
 // Aspire pipeline
 app.MapDefaultEndpoints();

@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Endpoints\Create.CreateClientRequest.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" />
+    <PackageReference Include="Ardalis.Result" />
     <PackageReference Include="FastEndpoints" />
     <PackageReference Include="MediatR" />
     <PackageReference Include="Serilog.AspNetCore" />
@@ -30,10 +27,6 @@
     <Folder Include="Infrastructure\Data\" />
     <Folder Include="Integrations\" />
     <Folder Include="Interfaces\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Endpoints\Create.CreateClientRequest.cs" />
   </ItemGroup>
 
 </Project>
