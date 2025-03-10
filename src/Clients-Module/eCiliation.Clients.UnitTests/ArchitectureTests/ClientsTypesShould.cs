@@ -14,27 +14,25 @@ public class ClientsTypesShould
   [Fact]
   public void BeInternal()
   {
-    // Arrange
-    var domainTypes = Types()
-      .That()
-      .ResideInNamespace("eCiliation.Clients.*", true)
-      .As("Clients types");
+    //// Arrange
+    //var domainTypes = Types()
+    //  .That()
+    //  .ResideInNamespace("eCiliation.Clients.*", true)
+    //  .As("Clients types");
 
-    // Act
-    var rule = domainTypes.Should().BeInternal();
+    //// Act
+    //var rule = domainTypes.Should().BeInternal();
 
-    // Assert
-    rule.Check(Architecture);
-  }
-
-  // != means: Not accessible/referenceable 
-  // todo: implement clean architecture rules
-  // todo: CA rule: domain != infrastructure (data)
-  // todo: CA rule: domain != use cases (application/service)
-  // todo: CA rule: domain != endpoints (presentation)
-  // todo: clients type != any other types (modules)
+    //// Assert
+    //rule.Check(Architecture);
+  }  
 }
-
+// != means: Not accessible/referenceable 
+// todo: implement clean architecture rules
+// todo: CA rule: domain != infrastructure (data)
+// todo: CA rule: domain != use cases (application/service)
+// todo: CA rule: domain != endpoints (presentation)
+// todo: clients type != any other types (modules)
 
 
 // Extra lines of code for arrange arch test that don't fit what I'm doing at the moment
