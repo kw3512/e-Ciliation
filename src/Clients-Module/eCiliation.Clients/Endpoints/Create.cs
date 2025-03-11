@@ -1,7 +1,7 @@
 ﻿using FastEndpoints;
-using eCiliation.Clients.Contracts;
 using MediatR;
-using eCiliation.Clients.UseCases.Create;
+using eCiliation.Clients.Contracts.Clients;
+using eCiliation.Clients.UseCases.Clients.Create;
 
 namespace eCiliation.Clients.Endpoints;
 internal class Create : Endpoint<CreateClientRequest>
@@ -21,7 +21,7 @@ internal class Create : Endpoint<CreateClientRequest>
     CancellationToken cancellationToken)
   {
     // todo: add mapping and mediator logic here
-    var command = new CreateClientCommand(request.clientName, request?.description);
+    var command = new CreateClientCommand(request.ClientName, request?.Description);
     var result = await _mediator.Send(command);
     await SendOkAsync();
   }

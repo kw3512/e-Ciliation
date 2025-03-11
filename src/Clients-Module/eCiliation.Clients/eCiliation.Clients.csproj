@@ -27,6 +27,7 @@
     <Folder Include="Infrastructure\Data\" />
     <Folder Include="Integrations\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="UseCases\Hospitals\" />
   </ItemGroup>
 
 </Project>

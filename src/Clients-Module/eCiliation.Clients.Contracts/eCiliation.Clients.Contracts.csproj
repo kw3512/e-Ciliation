@@ -10,4 +10,8 @@
     <InternalsVisibleTo Include="eCiliation.Clients.UnitTests" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Hospitals\" />
+  </ItemGroup>
+
 </Project>
