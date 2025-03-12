@@ -3,8 +3,8 @@
 namespace eCiliation.SharedKernel;
 public class UpdateStamp
 {
-  public DateTime UpdatedOn { get; private set; }
-  public string UpdatedBy { get; private set; }
+  public DateTime? UpdatedOn { get; private set; }
+  public string? UpdatedBy { get; private set; }
 
   public UpdateStamp(string updatedBy)
   {

@@ -4,7 +4,7 @@ namespace eCiliation.SharedKernel;
 public class CreateStamp
 {
   public DateTime CreatedOn { get; private set; } = DateTime.Now;
-  public string CreatedBy { get; private set; }
+  public string CreatedBy { get; private set; } = string.Empty;
 
   public CreateStamp(string createdBy)
   {

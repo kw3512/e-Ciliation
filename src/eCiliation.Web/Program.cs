@@ -19,7 +19,7 @@ logger.Information("Starting web host");
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddSqlServerDbContext<ClientDbContext>("sqlData");
+builder.AddSqlServerDbContext<ClientDbContext>("ClientsConnectionString");
 
 builder.Host.UseSerilog((_, config) =>
   config.ReadFrom.Configuration(builder.Configuration));
@@ -67,8 +67,8 @@ if (app.Environment.IsDevelopment())
 {
   app.MapOpenApi();
 
-  using(var scope = app.Services.CreateScope())
-  {
+  using (var scope = app.Services.CreateScope())
+  { 
     var context = scope.ServiceProvider.GetRequiredService<ClientDbContext>();
     context.Database.EnsureCreated();
   }

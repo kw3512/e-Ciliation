@@ -5,14 +5,14 @@ namespace eCiliation.Clients.Domain;
 
 internal class Client
 {
-  private readonly string _userId;
+  private readonly string _userId = string.Empty;
 
   public Guid Id { get; private set; } = Guid.NewGuid();
   public string Name { get; private set; } = string.Empty;
   public string Description { get; private set; } = string.Empty;
   public bool IsActive { get; private set; } = true;
-  public CreateStamp CreateStamp { get; private set; }
-  public UpdateStamp? UpdateStamp { get; private set; }
+  public required CreateStamp CreateStamp { get; set; } 
+  public required UpdateStamp UpdateStamp { get; set; }
 
   public Client(Guid id, string clientName, string userId, string description)
   {
@@ -27,6 +27,11 @@ internal class Client
     Description = description;
     _userId = Guard.Against.NullOrEmpty(userId);
     CreateStamp = new CreateStamp(_userId);
+  }
+
+  private Client()
+  {
+    // EF 
   }
 
   public void Deactivate(bool setToInactive)
