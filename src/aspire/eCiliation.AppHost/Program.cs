@@ -2,7 +2,7 @@
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var sql = builder.AddSqlServer("sqlData")
+var sql = builder.AddSqlServer("sqlServer-2022")
   .WithDataVolume()
   .AddDatabase("eCiliation");
 

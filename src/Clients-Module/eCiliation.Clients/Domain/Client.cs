@@ -12,7 +12,7 @@ internal class Client
   public string Description { get; private set; } = string.Empty;
   public bool IsActive { get; private set; } = true;
   public required CreateStamp CreateStamp { get; set; } 
-  public required UpdateStamp UpdateStamp { get; set; }
+  public UpdateStamp? UpdateStamp { get; set; }
 
   public Client(Guid id, string clientName, string userId, string description) 
   {
