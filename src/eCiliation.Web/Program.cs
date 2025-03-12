@@ -5,6 +5,7 @@ using FastEndpoints.Swagger;
 using Serilog;
 using eCiliation.Clients;
 using eCiliation.SharedKernel;
+using eCiliation.Clients.Infrastructure.Data;
 
 // Create new logger;
 // using enrich to custom format the log events via the configuration file;
@@ -17,6 +18,8 @@ var logger = Log.Logger = new LoggerConfiguration()
 logger.Information("Starting web host");
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddSqlServerDbContext<ClientDbContext>("sqlData");
 
 builder.Host.UseSerilog((_, config) =>
   config.ReadFrom.Configuration(builder.Configuration));
@@ -63,9 +66,21 @@ app.MapDefaultEndpoints();
 if (app.Environment.IsDevelopment())
 {
   app.MapOpenApi();
+
+  using(var scope = app.Services.CreateScope())
+  {
+    var context = scope.ServiceProvider.GetRequiredService<ClientDbContext>();
+    context.Database.EnsureCreated();
+  }
+}
+else
+{
+  // Not sure this is needed but adding for now just in case Aspire needs it.  Will review more.
+  app.UseExceptionHandler("/Error", createScopeForErrors: true);
+  app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+  app.UseHttpsRedirection();
 
 app.Run();
 

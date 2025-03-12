@@ -16,7 +16,7 @@ public static class ClientsModuleServiceExtensions
     )
   {
     // Add Services
-    services.AddDbContext<ClientDbContext>(config => config.UseSqlServer(connectionString));
+    //services.AddDbContext<ClientDbContext>(config => config.UseSqlServer(connectionString));
     // todo: add repos (scoped)
 
     // if using MediatR in this module, add any assemblies that contain handlers to the list

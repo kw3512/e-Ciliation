@@ -1,5 +1,13 @@
-﻿var builder = DistributedApplication.CreateBuilder(args);
+﻿using Aspire.Hosting;
 
-builder.AddProject<Projects.eCiliation_Web>("eciliation-web");
+var builder = DistributedApplication.CreateBuilder(args);
+
+var sql = builder.AddSqlServer("sqlData")
+  .WithDataVolume()
+  .AddDatabase("eCiliation");
+
+builder.AddProject<Projects.eCiliation_Web>("eciliation-web")
+  .WithReference(sql)
+  .WaitFor(sql);
 
 builder.Build().Run();

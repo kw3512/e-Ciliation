@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eCiliation.Clients.Infrastructure.Data;
 
-internal class ClientDbContext : DbContext
+public class ClientDbContext : DbContext
 {
   internal DbSet<Client> Clients { get; set; }
   public ClientDbContext(DbContextOptions<ClientDbContext> options): base(options)
