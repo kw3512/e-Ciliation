@@ -7,7 +7,7 @@ internal class Client
 {
   private readonly string _userId;
 
-  public Guid ClientId { get; private set; } = Guid.NewGuid();
+  public Guid Id { get; private set; } = Guid.NewGuid();
   public string Name { get; private set; } = string.Empty;
   public string Description { get; private set; } = string.Empty;
   public bool IsActive { get; private set; } = true;
@@ -16,7 +16,7 @@ internal class Client
 
   public Client(Guid id, string clientName, string userId, string description)
   {
-    ClientId = Guard.Against.Default(id);
+    Id = Guard.Against.Default(id);
     Guard.Against.NullOrEmpty(clientName);
     Guard.Against.StringTooShort(clientName, ClientConstants.NAME_MIN);
     Guard.Against.StringTooLong(clientName, ClientConstants.NAME_MAX);

@@ -24,9 +24,13 @@ builder.Host.UseSerilog((_, config) =>
 builder.Services.AddFastEndpoints()
   .SwaggerDocument();
 
+// todo: Review using Options pattern instead of passing all app settings items.
+
 // Add Module Services
 List<Assembly> mediatRAssemblies = [typeof(Program).Assembly];
-builder.Services.AddClientsModuleServices(builder.Configuration, logger, mediatRAssemblies);
+var clientsConnectionString = builder.Configuration.GetConnectionString("ClientsConnectionString")?? string.Empty;
+
+builder.Services.AddClientsModuleServices(clientsConnectionString, logger, mediatRAssemblies);
 
 // Set up MediatR
 builder.Services.AddMediatR(cfg =>

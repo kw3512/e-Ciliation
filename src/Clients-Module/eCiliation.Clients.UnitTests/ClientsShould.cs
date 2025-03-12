@@ -6,11 +6,11 @@ namespace eCiliation.Clients.UnitTests;
 public class ClientsShould
 {
   private static string _userId = "tUser";
-  private static readonly Guid _clientId = Guid.NewGuid();
+  private static readonly Guid _id = Guid.NewGuid();
   private static string _clientName = "Client Name";
   private static string _description = "Client Description";
 
-  private readonly Client _sut = new(_clientId, _clientName, _userId, _description);
+  private readonly Client _sut = new(_id, _clientName, _userId, _description);
 
   [Fact]
   public void Be_In_ValidState_AfterInitialization()
@@ -20,7 +20,7 @@ public class ClientsShould
 
     // Assert
     _sut.Name.Should().BeEquivalentTo(_clientName);
-    _sut.ClientId.Should().Be(_clientId);
+    _sut.Id.Should().Be(_id);
     _sut.CreateStamp.CreatedBy.Should().BeEquivalentTo(_userId);
     _sut.CreateStamp.CreatedOn.Should().BeCloseTo(DateTime.Now, createdOnTimeSpan);
     _sut.IsActive.Should().BeTrue();

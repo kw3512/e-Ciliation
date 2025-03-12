@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using eCiliation.Clients.Domain;
+using eCiliation.Clients.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
@@ -7,12 +10,13 @@ public static class ClientsModuleServiceExtensions
 {
   public static IServiceCollection AddClientsModuleServices(
     this IServiceCollection services,
-    ConfigurationManager config,
+    string connectionString,
     ILogger logger,
     List<System.Reflection.Assembly> mediatRAssemblies
     )
   {
-    // todo: add db contexts
+    // Add Services
+    services.AddDbContext<ClientDbContext>(config => config.UseSqlServer(connectionString));
     // todo: add repos (scoped)
 
     // if using MediatR in this module, add any assemblies that contain handlers to the list
