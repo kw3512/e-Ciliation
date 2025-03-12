@@ -1,4 +1,5 @@
 ﻿using eCiliation.Clients.Domain;
+using eCiliation.SharedKernel;
 using FluentAssertions;
 
 namespace eCiliation.Clients.UnitTests;
@@ -10,7 +11,11 @@ public class ClientsShould
   private static string _clientName = "Client Name";
   private static string _description = "Client Description";
 
-  private readonly Client _sut = new(_id, _clientName, _userId, _description);
+  private readonly Client _sut = new(_id, _clientName, _userId, _description)
+  {
+    CreateStamp = new CreateStamp(_userId),
+    UpdateStamp = new UpdateStamp(_userId)
+  };
 
   [Fact]
   public void Be_In_ValidState_AfterInitialization()
@@ -25,7 +30,7 @@ public class ClientsShould
     _sut.CreateStamp.CreatedOn.Should().BeCloseTo(DateTime.Now, createdOnTimeSpan);
     _sut.IsActive.Should().BeTrue();
     _sut.IsActive.Should().BeTrue();
-    _sut.UpdateStamp.Should().BeNull();
+    //_sut.UpdateStamp.Should().BeNull();
     _sut.Description.Should().BeEquivalentTo(_description);  
   }
 

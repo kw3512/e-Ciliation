@@ -14,7 +14,7 @@ internal class Client
   public required CreateStamp CreateStamp { get; set; } 
   public required UpdateStamp UpdateStamp { get; set; }
 
-  public Client(Guid id, string clientName, string userId, string description)
+  public Client(Guid id, string clientName, string userId, string description) 
   {
     Id = Guard.Against.Default(id);
     Guard.Against.NullOrEmpty(clientName);
