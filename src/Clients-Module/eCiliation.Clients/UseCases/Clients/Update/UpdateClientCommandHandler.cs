@@ -5,13 +5,13 @@ using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.Update;
 
-internal class UpdateClientCommandHandler : IRequestHandler<UpdateClientCommand, Result<UpdateClientResponse>>
+internal class UpdateClientCommandHandler : IRequestHandler<UpdateClientCommand, Result<Guid>>
 {
   public UpdateClientCommandHandler()
   {
     // todo: inject repo
   }
-  public Task<Result<UpdateClientResponse>> Handle(UpdateClientCommand request, CancellationToken cancellationToken)
+  public Task<Result<Guid>> Handle(UpdateClientCommand request, CancellationToken cancellationToken)
   {
     throw new NotImplementedException();
   }

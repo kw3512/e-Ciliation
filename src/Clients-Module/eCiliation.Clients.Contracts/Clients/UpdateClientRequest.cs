@@ -1,3 +1,3 @@
 ﻿
 namespace eCiliation.Clients.Contracts.Clients;
-public record UpdateClientRequest(ClientDto Client);
+public record UpdateClientRequest(Guid Id, string ClientName, string Description);

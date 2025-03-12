@@ -9,4 +9,4 @@ using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.List;
 
-internal record ListClientsQuery(): IRequest<Result<IEnumerable<ListClientsResponse>>>;
+internal record ListClientsQuery(): IRequest<Result<IEnumerable<ClientSummary>>>;

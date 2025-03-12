@@ -9,14 +9,14 @@ using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.List;
 
-internal class ListClientsQueryHandler : IRequestHandler<ListClientsQuery, Result<IEnumerable<ListClientsResponse>>>
+internal class ListClientsQueryHandler : IRequestHandler<ListClientsQuery, Result<IEnumerable<ClientSummary>>>
 {
   public ListClientsQueryHandler()
   {
     // todo: inject repo
   }
 
-  public Task<Result<IEnumerable<ListClientsResponse>>> Handle(ListClientsQuery request, CancellationToken cancellationToken)
+  public Task<Result<IEnumerable<ClientSummary>>> Handle(ListClientsQuery request, CancellationToken cancellationToken)
   {
     throw new NotImplementedException();
   }

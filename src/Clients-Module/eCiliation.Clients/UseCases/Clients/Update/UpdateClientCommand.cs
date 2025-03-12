@@ -5,5 +5,5 @@ using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.Update;
 
-  internal record UpdateClientCommand (ClientDto Client) : IRequest<Result<UpdateClientResponse>>;
+  internal record UpdateClientCommand (Guid Id, string ClientName, string Description) : IRequest<Result<Guid>>;
 

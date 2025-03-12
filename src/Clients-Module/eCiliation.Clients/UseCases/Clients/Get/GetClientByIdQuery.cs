@@ -5,4 +5,4 @@ using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.Get;
 
- internal record GetClientByIdQuery(Guid Id) : IRequest<Result<GetClientByIdResponse?>>;
+ internal record GetClientByIdQuery(Guid Id) : IRequest<Result<ClientSummary?>>;

@@ -17,12 +17,11 @@ internal class Create : Endpoint<CreateClientRequest>
     Post("/client");
   }
 
-  public override async Task HandleAsync(CreateClientRequest request,
-    CancellationToken cancellationToken)
+  public override async Task HandleAsync(CreateClientRequest request, CancellationToken ct)
   {
     // todo: add mapping and mediator logic here
-    var command = new CreateClientCommand(request.ClientName, request?.Description);
-    var result = await _mediator.Send(command);
+    var command = new CreateClientCommand(request.ClientName, request.Description);
+    var result = await _mediator.Send(command, ct);
     await SendOkAsync();
   }
 }

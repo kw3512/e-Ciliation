@@ -1,3 +1,3 @@
 ﻿
 namespace eCiliation.Clients.Contracts.Clients;
-public record CreateClientRequest(string ClientName, string? Description);
+public record CreateClientRequest(string ClientName, string Description);

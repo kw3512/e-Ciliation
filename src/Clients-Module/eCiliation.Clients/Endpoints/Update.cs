@@ -18,12 +18,11 @@ internal class Update : Endpoint<UpdateClientRequest, UpdateClientResponse>
     Put("/client/{Id}");
   }
 
-  public override async Task HandleAsync(UpdateClientRequest req, CancellationToken ct)
+  public override async Task HandleAsync(UpdateClientRequest request, CancellationToken ct)
   {
-    var clientDto = new ClientDto(req.Client.Id, req.Client.ClientName, req.Client.Description);
-    var command = new UpdateClientRequest(clientDto);
+    var command = new UpdateClientRequest(request.Id, request.ClientName, request.Description);
 
-    var response = await _mediator.Send(command);
+    var response = await _mediator.Send(command, ct);
 
     await SendNoContentAsync();
   }
