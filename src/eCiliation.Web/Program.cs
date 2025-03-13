@@ -5,7 +5,7 @@ using FastEndpoints.Swagger;
 using Serilog;
 using eCiliation.Clients;
 using eCiliation.SharedKernel;
-using eCiliation.Clients.Infrastructure.Data;
+using eCiliation.Web.Middleware;
 
 // Serilog logger
 var logger = Log.Logger = new LoggerConfiguration()
@@ -58,12 +58,7 @@ app.MapDefaultEndpoints();
 if (app.Environment.IsDevelopment())
 {
   app.MapOpenApi();
-
-  using (var scope = app.Services.CreateScope())
-  { 
-    var context = scope.ServiceProvider.GetRequiredService<ClientDbContext>();
-    context.Database.EnsureCreated();
-  }
+  app.UseClientsModuleMiddleware();
 }
 else
 {
