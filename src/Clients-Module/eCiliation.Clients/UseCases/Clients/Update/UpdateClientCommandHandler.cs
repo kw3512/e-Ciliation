@@ -1,16 +1,20 @@
 ﻿
 using Ardalis.Result;
 using eCiliation.Clients.Contracts.Clients;
+using eCiliation.Clients.Interfaces;
 using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.Update;
 
 internal class UpdateClientCommandHandler : IRequestHandler<UpdateClientCommand, Result<Guid>>
 {
-  public UpdateClientCommandHandler()
+  private readonly IClientRepository _clientRepository;
+
+  public UpdateClientCommandHandler(IClientRepository clientRepository)
   {
-    // todo: inject repo
+    _clientRepository = clientRepository;
   }
+
   public Task<Result<Guid>> Handle(UpdateClientCommand request, CancellationToken cancellationToken)
   {
     throw new NotImplementedException();

@@ -5,15 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Ardalis.Result;
 using eCiliation.Clients.Contracts.Clients;
+using eCiliation.Clients.Interfaces;
 using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.List;
 
 internal class ListClientsQueryHandler : IRequestHandler<ListClientsQuery, Result<IEnumerable<ClientSummary>>>
 {
-  public ListClientsQueryHandler()
+  private readonly IClientRepository _clientRepository;
+
+  public ListClientsQueryHandler(IClientRepository clientRepository)
   {
-    // todo: inject repo
+    _clientRepository = clientRepository;
   }
 
   public Task<Result<IEnumerable<ClientSummary>>> Handle(ListClientsQuery request, CancellationToken cancellationToken)

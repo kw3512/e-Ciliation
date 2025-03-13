@@ -47,8 +47,6 @@ builder.Services.AddOpenApi();
 var app = builder.Build();
 
 
-
-
 // Pipelines
 app.UseFastEndpoints()
 .UseSwaggerGen();

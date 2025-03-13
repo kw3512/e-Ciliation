@@ -1,6 +1,8 @@
 ﻿using eCiliation.Clients.Domain;
 using eCiliation.Clients.Infrastructure.Data;
+using eCiliation.Clients.Interfaces;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
@@ -13,9 +15,9 @@ public static class ClientsModuleServiceExtensions
     List<System.Reflection.Assembly> mediatRAssemblies
     )
   {
-    // Add Services (Aspire: SqlServer)
-    builder.AddSqlServerDbContext<ClientDbContext>(ClientConstants.CLIENT_CONNECTION_STRING);    
-    // todo: add repos (scoped)
+    // Add Services
+    builder.AddSqlServerDbContext<ClientDbContext>(ClientConstants.CLIENT_CONNECTION_STRING);
+    builder.Services.AddScoped<IClientRepository, EfClientRepository>();
 
     // if using MediatR in this module, add any assemblies that contain handlers to the list
     mediatRAssemblies.Add(typeof(ClientsModuleServiceExtensions).Assembly);
