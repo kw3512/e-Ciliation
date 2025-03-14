@@ -17,6 +17,7 @@ internal class Update : Endpoint<UpdateClientRequest, UpdateClientResponse>
   public override void Configure()
   {
     Put("/client/{Id}");
+    AllowAnonymous();
   }
 
   public override async Task HandleAsync(UpdateClientRequest request, CancellationToken ct)

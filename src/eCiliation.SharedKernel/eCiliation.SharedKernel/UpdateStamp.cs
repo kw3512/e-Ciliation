@@ -8,7 +8,7 @@ public class UpdateStamp
 
   public UpdateStamp(string updatedBy)
   {
-    UpdatedBy = Guard.Against.NullOrEmpty(updatedBy);
+    UpdatedBy = updatedBy;//Guard.Against.NullOrEmpty(updatedBy);
   }
 
   public void SetUpdatedOn()

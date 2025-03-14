@@ -15,6 +15,7 @@ internal class Create : Endpoint<CreateClientRequest, CreateClientResponse>
   public override void Configure()
   {
     Post("/client");
+    AllowAnonymous();
   }
 
   public override async Task HandleAsync(CreateClientRequest request, CancellationToken ct)

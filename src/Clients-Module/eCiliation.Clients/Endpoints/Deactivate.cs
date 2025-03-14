@@ -16,6 +16,7 @@ internal class Deactivate : Endpoint<DeactivateClientRequest>
   public override void Configure()
   {
     Put("/client/{id}/deactivate");
+    AllowAnonymous();
   }
 
   public override async Task HandleAsync(DeactivateClientRequest request, CancellationToken ct)

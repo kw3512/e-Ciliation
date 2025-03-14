@@ -16,6 +16,7 @@ internal class List : EndpointWithoutRequest<ListClientsResponse>
   public override void Configure()
   {
     Get("/clients");
+    AllowAnonymous();
   }
 
   public override async Task HandleAsync(CancellationToken ct)

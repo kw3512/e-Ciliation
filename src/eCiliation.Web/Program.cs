@@ -1,4 +1,6 @@
-﻿// Serilog logger
+﻿using FastEndpoints.Security;
+
+// Serilog logger
 var logger = Log.Logger = new LoggerConfiguration()
   .Enrich.FromLogContext()
   .WriteTo.Console()
@@ -12,7 +14,13 @@ builder.Host.UseSerilog((_, config) =>
   config.ReadFrom.Configuration(builder.Configuration));
 
 builder.Services.AddFastEndpoints()
+  .AddAuthenticationJwtBearer((opt) =>
+  {
+    opt.SigningKey = "ThisIsASimplePlaceholderUntil_I_AddRealSecurity";
+  })
+  .AddAuthorization()
   .SwaggerDocument();
+
 
 // Add Module Services
 List<Assembly> mediatRAssemblies = [typeof(Program).Assembly];
@@ -30,11 +38,14 @@ builder.Services.AddOpenApi();
 var app = builder.Build();
 
 // Middlewares
-app.UseFastEndpoints()
-.UseSwaggerGen();
-
 // Aspire
 app.MapDefaultEndpoints();
+
+app.UseAuthentication()
+  .UseAuthorization();
+
+app.UseFastEndpoints()
+.UseSwaggerGen();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -44,8 +55,7 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-  // Not sure this is needed but adding for now
-  // just in case Aspire needs it.  Will review more.
+  // Not sure this is needed but adding for now just in case Aspire needs it.  Will review more.
   app.UseExceptionHandler("/Error", createScopeForErrors: true);
   app.UseHsts();
 }

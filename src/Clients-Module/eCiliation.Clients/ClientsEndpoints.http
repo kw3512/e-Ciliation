@@ -8,8 +8,9 @@ GET {{host}}:{{port}}/clients
 ###
 
 // Get a specific client
-@id_to_get=1
+@id_to_get=a89f6cd7-4693-457b-9009-02205dbbfe45
 GET {{host}}:{{port}}/clients/{{id_to_get}}
+Accept: application/json
 
 ###
 

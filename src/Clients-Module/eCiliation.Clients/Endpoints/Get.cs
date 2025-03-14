@@ -16,6 +16,7 @@ internal class Get : Endpoint<GetClientByIdRequest, GetClientByIdResponse>
   public override void Configure()
   {
     Get("/client/{Id}");
+    AllowAnonymous();
   }
 
   public override async Task HandleAsync(GetClientByIdRequest request, CancellationToken ct)
