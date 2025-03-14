@@ -19,21 +19,14 @@ internal class Create : Endpoint<CreateClientRequest, CreateClientResponse>
 
   public override async Task HandleAsync(CreateClientRequest request, CancellationToken ct)
   {    
-    var command = new CreateClientCommand(request.ClientName, request.Description);
-    var results = await _mediator.Send(command, ct);
+    var command = new CreateClientCommand(request.Name, request.Description, request.UserId);
+    var result = await _mediator.Send(command, ct);
 
-    if (!results.IsSuccess)
+    if (!result.IsSuccess)
       await SendErrorsAsync();
 
-    // todo: create extenstion method for mapping.
-    var createClientResponse = new CreateClientResponse(
-      results.Value.Id,
-      results.Value.Name,
-      results.Value.Description,
-      results.Value.IsActive,
-      results.Value.CreateStamp,
-      results.Value.UpdateStamp
-      );
+    var clientDetails = result.Value;
+    var createClientResponse = clientDetails.MapCreateResponse();
 
     await SendCreatedAtAsync("/client", createClientResponse.Id, createClientResponse);
   }

@@ -21,12 +21,12 @@ internal class Get : Endpoint<GetClientByIdRequest, GetClientByIdResponse>
   public override async Task HandleAsync(GetClientByIdRequest request, CancellationToken ct)
   {
     var query = new GetClientByIdQuery(request.Id);
-    var results = await _mediator.Send(query, ct);
+    var result = await _mediator.Send(query, ct);
 
-    if (!results.IsSuccess)
+    if (!result.IsSuccess)
       await SendNotFoundAsync();
 
-    var clientDetails = results.Value;
+    var clientDetails = result.Value;
     var response = clientDetails.MapGetByIdResponse();
 
     await SendOkAsync(response);

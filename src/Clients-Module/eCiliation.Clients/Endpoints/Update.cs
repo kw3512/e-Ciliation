@@ -21,19 +21,12 @@ internal class Update : Endpoint<UpdateClientRequest, UpdateClientResponse>
 
   public override async Task HandleAsync(UpdateClientRequest request, CancellationToken ct)
   {
-    var command = new UpdateClientCommand(request.Id, request.ClientName, request.Description);
-    var results = await _mediator.Send(command, ct);
+    var command = new UpdateClientCommand(request.Id, request.Name, request.Description, request.UserId);
+    var result = await _mediator.Send(command, ct);
 
-    // todo: create extenstion method for mapping.
-    var updateClientResponse = new UpdateClientResponse(
-      results.Value.Id,
-      results.Value.Name,
-      results.Value.Description,
-      results.Value.IsActive,
-      results.Value.CreateStamp,
-      results.Value.UpdateStamp
-      );
+    var clientDetails = result.Value;
+    var updateClientReponse = clientDetails.MapUpdateResponse();
 
-    await SendAsync(updateClientResponse);
+    await SendAsync(updateClientReponse);
   }
 }

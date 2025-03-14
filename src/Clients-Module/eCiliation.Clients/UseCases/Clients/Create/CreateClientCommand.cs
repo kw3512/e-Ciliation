@@ -4,4 +4,6 @@ using eCiliation.Clients.Domain;
 using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.Create;
-internal record CreateClientCommand(string ClientName, string Description) : IRequest<Result<ClientDetails>>;
+internal record CreateClientCommand(string Name, 
+  string Description, 
+  string UserId) : IRequest<Result<ClientDetails>>;

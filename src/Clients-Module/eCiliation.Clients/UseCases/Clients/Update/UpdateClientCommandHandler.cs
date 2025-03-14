@@ -1,6 +1,7 @@
 ﻿
 using Ardalis.Result;
 using eCiliation.Clients.Contracts.Clients.Models;
+using eCiliation.Clients.Domain;
 using eCiliation.Clients.Interfaces;
 using MediatR;
 
@@ -15,8 +16,23 @@ internal class UpdateClientCommandHandler : IRequestHandler<UpdateClientCommand,
     _clientRepository = clientRepository;
   }
 
-  public Task<Result<ClientDetails>> Handle(UpdateClientCommand request, CancellationToken ct)
+  public async Task<Result<ClientDetails>> Handle(UpdateClientCommand request, CancellationToken ct)
   {
-    throw new NotImplementedException();
+    var existingClient = await _clientRepository.GetByIdAsync(request.Id, ct);
+
+    if (existingClient == null)
+      return Result.NotFound();
+
+    Client clientToUpdate = new Client(request.Name, request.UserId, request.Description)
+    { 
+     CreateStamp = existingClient.CreateStamp
+    };
+    clientToUpdate.SetUpdateStamp();
+
+    await _clientRepository.UpdateAsync(clientToUpdate, ct);
+    await _clientRepository.SaveChangeAsync(ct);
+    var clientDetails = clientToUpdate.MapClientDetails();
+
+    return Result.Success(clientDetails);
   }
 }

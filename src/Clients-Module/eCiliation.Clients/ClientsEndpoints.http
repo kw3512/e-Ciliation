@@ -1,0 +1,41 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@host=https://localhost
+@port=7059
+
+// List all clients
+GET {{host}}:{{port}}/clients
+
+###
+
+// Get a specific client
+@id_to_get=1
+GET {{host}}:{{port}}/clients/{{id_to_get}}
+
+###
+
+// Add a new client
+POST {{host}}:{{port}}/clients
+Content-Type: application/json
+
+{
+  "name": "Client A",
+  "description": "Client Name Description"
+}
+
+###
+
+// Update a client
+@id_to_update=1
+PUT {{host}}:{{port}}/clients/{{id_to_update}}
+Content-Type: application/json
+
+{
+  "name": "Client A",
+  "description": "Client Name Description - Updated"
+}
+
+###
+
+// Deactivate a client
+@id_to_deactivate=1
+PUT {{host}}:{{port}}/clients/{{id_to_deactivate}}/deactivate

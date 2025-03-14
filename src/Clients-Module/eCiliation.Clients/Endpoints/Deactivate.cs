@@ -21,9 +21,9 @@ internal class Deactivate : Endpoint<DeactivateClientRequest>
   public override async Task HandleAsync(DeactivateClientRequest request, CancellationToken ct)
   {
     var command = new DeactivateClientCommand(request.Id);
-    var results = await _mediator.Send(command, ct);
+    var result = await _mediator.Send(command, ct);
 
-    if (!results.IsSuccess)
+    if (!result.IsSuccess)
       await SendNotFoundAsync();
 
     await SendOkAsync();

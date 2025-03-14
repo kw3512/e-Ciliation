@@ -5,7 +5,7 @@ namespace eCiliation.Clients.Domain;
 
 internal class Client
 {
-  private readonly string _userId = string.Empty;
+  private string _userId = string.Empty;
 
   public Guid Id { get; private set; } = Guid.NewGuid();
   public string Name { get; private set; } = string.Empty;
@@ -14,9 +14,8 @@ internal class Client
   public required CreateStamp CreateStamp { get; init; } 
   public UpdateStamp? UpdateStamp { get; private set; }
 
-  public Client(Guid id, string clientName, string userId, string description) 
+  public Client(string clientName, string userId, string description) 
   {
-    Id = Guard.Against.Default(id);
     Guard.Against.NullOrEmpty(clientName);
     Guard.Against.StringTooShort(clientName, ClientConstants.NAME_MIN);
     Guard.Against.StringTooLong(clientName, ClientConstants.NAME_MAX);
@@ -25,7 +24,7 @@ internal class Client
     Guard.Against.StringTooLong(description, ClientConstants.DESCRIPTION_MAX);
     Name = clientName;
     Description = description;
-    _userId = Guard.Against.NullOrEmpty(userId);
+    SetUserId(userId);
     CreateStamp = new CreateStamp(_userId);
   }
 
@@ -43,5 +42,10 @@ internal class Client
   {
     var newUpdateStamp = new UpdateStamp(_userId);
     UpdateStamp = newUpdateStamp;
+  }
+
+  private void SetUserId(string userId)
+  {
+    _userId = Guard.Against.NullOrEmpty(userId);
   }
 }
