@@ -1,6 +1,6 @@
 ﻿
 using Ardalis.Result;
-using eCiliation.Clients.Contracts.Clients;
+using eCiliation.Clients.Contracts.Clients.Models;
 using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.Update;

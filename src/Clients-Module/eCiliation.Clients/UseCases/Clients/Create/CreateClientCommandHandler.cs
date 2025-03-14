@@ -1,11 +1,11 @@
 ﻿using Ardalis.Result;
-using eCiliation.Clients.Contracts.Clients;
+using eCiliation.Clients.Contracts.Clients.Models;
 using eCiliation.Clients.Domain;
 using eCiliation.Clients.Interfaces;
 using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.Create;
-internal class CreateClientCommandHandler : IRequestHandler<CreateClientCommand, Result<Client>>
+internal class CreateClientCommandHandler : IRequestHandler<CreateClientCommand, Result<ClientDetails>>
 {
   private readonly IClientRepository _clientRepository;
 
@@ -14,7 +14,7 @@ internal class CreateClientCommandHandler : IRequestHandler<CreateClientCommand,
     _clientRepository = clientRepository;
   }
 
-  public Task<Result<Client>> Handle(CreateClientCommand request, CancellationToken cancellationToken)
+  public Task<Result<ClientDetails>> Handle(CreateClientCommand request, CancellationToken ct)
   {
     throw new NotImplementedException();
   }

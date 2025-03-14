@@ -26,16 +26,9 @@ internal class Get : Endpoint<GetClientByIdRequest, GetClientByIdResponse>
     if (!results.IsSuccess)
       await SendNotFoundAsync();
 
-    // todo: create extenstion method for mapping.
-    var getClientByIdResponse = new GetClientByIdResponse(
-      results.Value!.Id,
-      results.Value.Name,
-      results.Value.Description,
-      results.Value.IsActive,
-      results.Value.CreateStamp,
-      results.Value.UpdateStamp
-      );
+    var clientDetails = results.Value;
+    var response = clientDetails.MapGetByIdResponse();
 
-    await SendOkAsync(getClientByIdResponse);
+    await SendOkAsync(response);
   }
 }

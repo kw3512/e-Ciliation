@@ -1,7 +1,6 @@
 ﻿
 using Ardalis.Result;
-using eCiliation.Clients.Contracts.Clients;
-using eCiliation.Clients.Domain;
+using eCiliation.Clients.Contracts.Clients.Models;
 using eCiliation.Clients.Interfaces;
 using MediatR;
 
@@ -16,8 +15,17 @@ internal class ListClientsQueryHandler : IRequestHandler<ListClientsQuery, Resul
     _clientRepository = clientRepository;
   }
 
-  public Task<Result<List<ClientSummary>>> Handle(ListClientsQuery request, CancellationToken cancellationToken)
+  public async Task<Result<List<ClientSummary>>> Handle(ListClientsQuery request, CancellationToken ct)
   {
-    throw new NotImplementedException();
+    var clients = await _clientRepository.ListAsync(ct);
+
+    if (clients == null)
+      return Result.NotFound();
+
+    return clients.Select(c => new ClientSummary(
+      c.Id,
+      c.Name,
+      c.Description
+      )).ToList();
   }
 }

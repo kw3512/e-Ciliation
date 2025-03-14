@@ -30,20 +30,20 @@ internal class EfClientRepository : IClientRepository
     return Task.CompletedTask;
   }
 
-  public async Task SaveChangeAsync(CancellationToken ct)
+  public Task SaveChangeAsync(CancellationToken ct)
   {
-    await _dbContext.SaveChangesAsync(ct);
+     return _dbContext.SaveChangesAsync(ct);
   }
 
 
-  public async Task<Client?> GetByIdAsync(Guid id, CancellationToken ct)
+  public Task<Client?> GetByIdAsync(Guid id, CancellationToken ct)
   {
-    return await _dbContext.Clients.FindAsync(id, ct);
+    return _dbContext.Clients.SingleOrDefaultAsync(c => c.Id == id);
   }
 
-  public async Task<List<Client>> ListAsync(CancellationToken ct)
+  public Task<List<Client>> ListAsync(CancellationToken ct)
   {
-    return await _dbContext.Clients.Where(x => x.IsActive)
+    return _dbContext.Clients.Where(x => x.IsActive)
       .AsNoTracking()
       .ToListAsync(ct);
   }

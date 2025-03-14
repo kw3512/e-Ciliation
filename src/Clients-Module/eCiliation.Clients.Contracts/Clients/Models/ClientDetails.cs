@@ -1,7 +1,6 @@
-﻿
-using eCiliation.SharedKernel;
+﻿using eCiliation.SharedKernel;
 
-namespace eCiliation.Clients.Contracts.Clients;
+namespace eCiliation.Clients.Contracts.Clients.Models;
 
 public record ClientDetails(Guid Id, 
   string Name, 

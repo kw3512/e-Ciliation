@@ -13,8 +13,7 @@ public class ClientsShould
 
   private readonly Client _sut = new(_id, _clientName, _userId, _description)
   {
-    CreateStamp = new CreateStamp(_userId),
-    UpdateStamp = new UpdateStamp(_userId)
+    CreateStamp = new CreateStamp(_userId)
   };
 
   [Fact]
@@ -22,6 +21,7 @@ public class ClientsShould
   {
     // Arrage
     TimeSpan createdOnTimeSpan = new TimeSpan(0, 0, 30);
+    _sut.SetUpdateStamp();
 
     // Assert
     _sut.Name.Should().BeEquivalentTo(_clientName);

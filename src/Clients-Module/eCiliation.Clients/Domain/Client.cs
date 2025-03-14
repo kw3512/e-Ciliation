@@ -11,8 +11,8 @@ internal class Client
   public string Name { get; private set; } = string.Empty;
   public string Description { get; private set; } = string.Empty;
   public bool IsActive { get; private set; } = true;
-  public required CreateStamp CreateStamp { get; set; } 
-  public UpdateStamp? UpdateStamp { get; set; }
+  public required CreateStamp CreateStamp { get; init; } 
+  public UpdateStamp? UpdateStamp { get; private set; }
 
   public Client(Guid id, string clientName, string userId, string description) 
   {
@@ -34,9 +34,9 @@ internal class Client
     // EF 
   }
 
-  public void Deactivate(bool setToInactive)
+  public void Deactivate()
   {
-    IsActive = Guard.Against.Deactivation(IsActive, setToInactive);
+    IsActive = Guard.Against.Deactivation(IsActive);
   }
 
   public void SetUpdateStamp()

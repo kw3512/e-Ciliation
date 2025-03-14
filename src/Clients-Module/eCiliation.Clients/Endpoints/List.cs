@@ -21,6 +21,7 @@ internal class List : EndpointWithoutRequest<ListClientsResponse>
   public override async Task HandleAsync(CancellationToken ct)
   {
     var results = await _mediator.Send(new ListClientsQuery(), ct);
+
     var listClientsResponse = new ListClientsResponse();
     listClientsResponse.ClientSummaryList = results.Value;
 

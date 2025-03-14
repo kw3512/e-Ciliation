@@ -1,13 +1,12 @@
 ﻿
 using Ardalis.Result;
-using eCiliation.Clients.Contracts.Clients;
-using eCiliation.Clients.Domain;
+using eCiliation.Clients.Contracts.Clients.Models;
 using eCiliation.Clients.Interfaces;
 using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.Get;
 
-internal class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, Result<Client?>>
+internal class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, Result<ClientDetails>>
 {
   private readonly IClientRepository _clientRepository;
 
@@ -16,8 +15,21 @@ internal class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, R
     _clientRepository = clientRepository;
   }
 
-  public Task<Result<Client?>> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
+  public async Task<Result<ClientDetails>> Handle(GetClientByIdQuery request, CancellationToken ct)
   {
-    throw new NotImplementedException();
+    var client = await _clientRepository.GetByIdAsync(request.Id, ct);
+
+    if (client == null)
+      return Result.NotFound();
+
+    var clientDetails = new ClientDetails(
+      client!.Id, 
+      client.Name, 
+      client.Description,
+      client.IsActive,
+      client.CreateStamp,
+      client.UpdateStamp);
+
+    return clientDetails;  
   }
 }
