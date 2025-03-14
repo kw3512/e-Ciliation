@@ -1,3 +1,7 @@
-﻿namespace eCiliation.Clients.Contracts.Clients;
+﻿
+namespace eCiliation.Clients.Contracts.Clients;
 
-public record ListClientsResponse(IEnumerable<ClientSummary> ClientSummaries);
+public class ListClientsResponse
+{
+  public List<ClientSummary> ClientSummaryList {get; set;} = new();
+}

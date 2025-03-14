@@ -6,7 +6,7 @@ using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.Update;
 
-internal class UpdateClientCommandHandler : IRequestHandler<UpdateClientCommand, Result<Guid>>
+internal class UpdateClientCommandHandler : IRequestHandler<UpdateClientCommand, Result<ClientDetails>>
 {
   private readonly IClientRepository _clientRepository;
 
@@ -15,7 +15,7 @@ internal class UpdateClientCommandHandler : IRequestHandler<UpdateClientCommand,
     _clientRepository = clientRepository;
   }
 
-  public Task<Result<Guid>> Handle(UpdateClientCommand request, CancellationToken cancellationToken)
+  public Task<Result<ClientDetails>> Handle(UpdateClientCommand request, CancellationToken cancellationToken)
   {
     throw new NotImplementedException();
   }

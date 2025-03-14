@@ -21,11 +21,21 @@ internal class Get : Endpoint<GetClientByIdRequest, GetClientByIdResponse>
   public override async Task HandleAsync(GetClientByIdRequest request, CancellationToken ct)
   {
     var query = new GetClientByIdQuery(request.Id);
-    var response = await _mediator.Send(query, ct);
+    var results = await _mediator.Send(query, ct);
 
-    if (!response.IsSuccess)
+    if (!results.IsSuccess)
       await SendNotFoundAsync();
 
-    await SendOkAsync();
+    // todo: create extenstion method for mapping.
+    var getClientByIdResponse = new GetClientByIdResponse(
+      results.Value!.Id,
+      results.Value.Name,
+      results.Value.Description,
+      results.Value.IsActive,
+      results.Value.CreateStamp,
+      results.Value.UpdateStamp
+      );
+
+    await SendOkAsync(getClientByIdResponse);
   }
 }

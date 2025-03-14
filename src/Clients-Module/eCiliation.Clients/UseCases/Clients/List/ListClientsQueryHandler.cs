@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Ardalis.Result;
 using eCiliation.Clients.Contracts.Clients;
+using eCiliation.Clients.Domain;
 using eCiliation.Clients.Interfaces;
 using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.List;
 
-internal class ListClientsQueryHandler : IRequestHandler<ListClientsQuery, Result<IEnumerable<ClientSummary>>>
+internal class ListClientsQueryHandler : IRequestHandler<ListClientsQuery, Result<List<ClientSummary>>>
 {
   private readonly IClientRepository _clientRepository;
 
@@ -19,7 +16,7 @@ internal class ListClientsQueryHandler : IRequestHandler<ListClientsQuery, Resul
     _clientRepository = clientRepository;
   }
 
-  public Task<Result<IEnumerable<ClientSummary>>> Handle(ListClientsQuery request, CancellationToken cancellationToken)
+  public Task<Result<List<ClientSummary>>> Handle(ListClientsQuery request, CancellationToken cancellationToken)
   {
     throw new NotImplementedException();
   }

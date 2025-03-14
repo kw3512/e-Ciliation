@@ -14,4 +14,8 @@
     <Folder Include="Hospitals\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\eCiliation.SharedKernel\eCiliation.SharedKernel\eCiliation.SharedKernel.csproj" />
+  </ItemGroup>
+
 </Project>
