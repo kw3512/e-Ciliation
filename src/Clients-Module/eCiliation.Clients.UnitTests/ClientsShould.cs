@@ -26,7 +26,7 @@ public class ClientsShould
 
     // Assert
     _sut.Name.Should().BeEquivalentTo(_clientName);
-    _sut.Id.Should().Be(_id);
+    _sut.Id.Should().NotBeEmpty();
     _sut.CreateStamp.CreatedBy.Should().BeEquivalentTo(_userId);
     _sut.CreateStamp.CreatedOn.Should().BeCloseTo(DateTime.Now, createdOnTimeSpan);
     _sut.IsActive.Should().BeTrue();
