@@ -11,8 +11,6 @@ internal class ClientConfiguration : IEntityTypeConfiguration<Client>
     builder.Property(p => p.Id)
       .ValueGeneratedNever();
 
-    // todo: Add Seed Data and other column settings/configs.
-
     builder.ComplexProperty(o => o.CreateStamp, createStamp =>
     {
       createStamp.Property(x => x.CreatedBy)

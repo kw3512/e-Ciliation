@@ -9,8 +9,7 @@ public static class ClientsModuleMiddlewareExtensions
     using (var scope = app.Services.CreateScope())
     {
       var context = scope.ServiceProvider.GetRequiredService<ClientDbContext>();
-      context.Database.EnsureCreated();
-      // todo: Call database seeding method.
+      context.Database.EnsureCreatedAsync();
     }
 
     return app;
