@@ -16,15 +16,16 @@ internal class DeactivateClientCommandHandler : IRequestHandler<DeactivateClient
 
   public async Task<Result> Handle(DeactivateClientCommand request, CancellationToken ct)
   {
-    var client = await _clientRepository.GetByIdAsync(request.Id, ct);
+    var clientToDeactivate = await _clientRepository.GetByIdAsync(request.Id, ct);
 
-    if (client == null)
+    if (clientToDeactivate == null)
       return Result.NotFound();
 
-    client!.Deactivate();
-    client.SetUpdateStamp();
+    clientToDeactivate!.Deactivate();
+    clientToDeactivate.SetUserId(request.UserId);
+    clientToDeactivate.SetUpdateStamp();
 
-    await _clientRepository.UpdateAsync(client, ct);
+    await _clientRepository.UpdateAsync(clientToDeactivate, ct);
     await _clientRepository.SaveChangeAsync(ct);
 
     return Result.Success();

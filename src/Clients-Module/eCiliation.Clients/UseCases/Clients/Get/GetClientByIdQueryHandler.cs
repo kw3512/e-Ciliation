@@ -22,13 +22,7 @@ internal class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, R
     if (client == null)
       return Result.NotFound();
 
-    var clientDetails = new ClientDetails(
-      client!.Id, 
-      client.Name, 
-      client.Description,
-      client.IsActive,
-      client.CreateStamp,
-      client.UpdateStamp);
+    var clientDetails = client.MapClientDetails();
 
     return clientDetails;  
   }

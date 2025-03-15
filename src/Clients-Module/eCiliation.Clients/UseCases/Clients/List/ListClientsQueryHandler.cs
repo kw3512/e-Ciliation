@@ -22,10 +22,8 @@ internal class ListClientsQueryHandler : IRequestHandler<ListClientsQuery, Resul
     if (clients == null)
       return Result.NotFound();
 
-    return clients.Select(c => new ClientSummary(
-      c.Id,
-      c.Name,
-      c.Description
-      )).ToList();
+    var clientSummaries = clients.MapClientSummaries();
+
+    return clientSummaries;
   }
 }

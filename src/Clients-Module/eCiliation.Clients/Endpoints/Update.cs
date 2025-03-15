@@ -16,12 +16,13 @@ internal class Update : Endpoint<UpdateClientRequest, UpdateClientResponse>
 
   public override void Configure()
   {
-    Put("/client/{Id}");
+    Put("/clients/{Id}");
     AllowAnonymous();
   }
 
   public override async Task HandleAsync(UpdateClientRequest request, CancellationToken ct)
   {
+    // todo: Make sure that inactive clients can not be update and properly fail.
     var command = new UpdateClientCommand(request.Id, request.Name, request.Description, request.UserId);
     var result = await _mediator.Send(command, ct);
 

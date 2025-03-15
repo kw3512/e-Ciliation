@@ -4,4 +4,4 @@ using MediatR;
 
 namespace eCiliation.Clients.UseCases.Clients.Deactivate;
 
-internal record DeactivateClientCommand(Guid Id) : IRequest<Result>;
+internal record DeactivateClientCommand(Guid Id, string UserId) : IRequest<Result>;

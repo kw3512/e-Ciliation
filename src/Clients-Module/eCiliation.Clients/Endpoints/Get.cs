@@ -15,7 +15,7 @@ internal class Get : Endpoint<GetClientByIdRequest, GetClientByIdResponse>
 
   public override void Configure()
   {
-    Get("/client/{Id}");
+    Get("/clients/{Id}");
     AllowAnonymous();
   }
 
@@ -25,7 +25,10 @@ internal class Get : Endpoint<GetClientByIdRequest, GetClientByIdResponse>
     var result = await _mediator.Send(query, ct);
 
     if (!result.IsSuccess)
+    {
       await SendNotFoundAsync();
+      return;
+    }
 
     var clientDetails = result.Value;
     var response = clientDetails.MapGetByIdResponse();

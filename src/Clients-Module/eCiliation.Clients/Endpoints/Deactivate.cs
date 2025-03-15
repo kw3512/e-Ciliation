@@ -15,17 +15,20 @@ internal class Deactivate : Endpoint<DeactivateClientRequest>
 
   public override void Configure()
   {
-    Put("/client/{id}/deactivate");
+    Put("/clients/{Id}/deactivate");
     AllowAnonymous();
   }
 
   public override async Task HandleAsync(DeactivateClientRequest request, CancellationToken ct)
   {
-    var command = new DeactivateClientCommand(request.Id);
+    var command = new DeactivateClientCommand(request.Id, request.UserId);
     var result = await _mediator.Send(command, ct);
 
     if (!result.IsSuccess)
+    {
       await SendNotFoundAsync();
+      return;
+    }
 
     await SendOkAsync();
   }

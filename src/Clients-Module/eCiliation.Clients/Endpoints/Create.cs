@@ -14,7 +14,7 @@ internal class Create : Endpoint<CreateClientRequest, CreateClientResponse>
 
   public override void Configure()
   {
-    Post("/client");
+    Post("/clients");
     AllowAnonymous();
   }
 
@@ -24,7 +24,10 @@ internal class Create : Endpoint<CreateClientRequest, CreateClientResponse>
     var result = await _mediator.Send(command, ct);
 
     if (!result.IsSuccess)
+    {
       await SendErrorsAsync();
+      return;
+    }
 
     var clientDetails = result.Value;
     var createClientResponse = clientDetails.MapCreateResponse();

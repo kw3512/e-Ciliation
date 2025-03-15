@@ -62,4 +62,14 @@ internal static class ClientsModuleMapperExtensions
 
     return cd;
   }
+
+  public static List<ClientSummary> MapClientSummaries(
+    this IEnumerable<Client> clients)
+  {
+    return clients.Select(c => new ClientSummary(
+     c.Id,
+     c.Name,
+     c.Description
+     )).ToList();
+  }
 }

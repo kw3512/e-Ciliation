@@ -11,9 +11,10 @@ public class ClientsShould
   private static string _clientName = "Client Name";
   private static string _description = "Client Description";
 
-  private readonly Client _sut = new(_clientName, _userId, _description)
+  private readonly Client _sut = new(_clientName, _description, _userId)
   {
-    CreateStamp = new CreateStamp(_userId)
+    CreateStamp = new CreateStamp(_userId),
+    UpdateStamp = new UpdateStamp(null)
   };
 
   [Fact]

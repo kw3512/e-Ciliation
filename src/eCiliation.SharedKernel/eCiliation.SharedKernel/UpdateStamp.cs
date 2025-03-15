@@ -6,13 +6,12 @@ public class UpdateStamp
   public DateTime? UpdatedOn { get; private set; }
   public string? UpdatedBy { get; private set; }
 
-  public UpdateStamp(string updatedBy)
+  public UpdateStamp(string? updatedBy)
   {
-    UpdatedBy = updatedBy;//Guard.Against.NullOrEmpty(updatedBy);
-  }
-
-  public void SetUpdatedOn()
-  {
-    UpdatedOn = DateTime.Now;
+    if (updatedBy != null)
+    {
+      UpdatedBy = Guard.Against.NullOrEmpty(updatedBy);
+      UpdatedOn = DateTime.Now;
+    }
   }
 }

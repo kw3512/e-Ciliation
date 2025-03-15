@@ -38,12 +38,12 @@ internal class EfClientRepository : IClientRepository
 
   public Task<Client?> GetByIdAsync(Guid id, CancellationToken ct)
   {
-    return _dbContext.Clients.SingleOrDefaultAsync(c => c.Id == id);
+    return _dbContext.Clients.SingleOrDefaultAsync(x => x.Id == id && x.IsActive);
   }
 
   public Task<List<Client>> ListAsync(CancellationToken ct)
   {
-    return _dbContext.Clients.Where(x => x.IsActive)
+    return _dbContext.Clients.Where(x => x.IsActive && x.IsActive)
       .AsNoTracking()
       .ToListAsync(ct);
   }

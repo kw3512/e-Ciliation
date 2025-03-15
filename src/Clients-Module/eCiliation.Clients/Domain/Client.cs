@@ -8,13 +8,13 @@ internal class Client
   private string _userId = string.Empty;
 
   public Guid Id { get; private set; } = Guid.NewGuid();
-  public string Name { get; private set; } = string.Empty;
-  public string Description { get; private set; } = string.Empty;
+  public string Name { get; set; } = string.Empty;
+  public string Description { get; set; } = string.Empty;
   public bool IsActive { get; private set; } = true;
   public required CreateStamp CreateStamp { get; init; } 
-  public UpdateStamp? UpdateStamp { get; private set; }
+  public required UpdateStamp UpdateStamp { get; set; }
 
-  public Client(string clientName, string userId, string description) 
+  public Client(string clientName, string description, string userId) 
   {
     Guard.Against.NullOrEmpty(clientName);
     Guard.Against.StringTooShort(clientName, ClientConstants.NAME_MIN);
@@ -44,7 +44,7 @@ internal class Client
     UpdateStamp = newUpdateStamp;
   }
 
-  private void SetUserId(string userId)
+  public void SetUserId(string userId)
   {
     _userId = Guard.Against.NullOrEmpty(userId);
   }

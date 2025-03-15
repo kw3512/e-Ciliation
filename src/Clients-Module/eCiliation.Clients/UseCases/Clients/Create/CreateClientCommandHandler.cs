@@ -17,14 +17,16 @@ internal class CreateClientCommandHandler : IRequestHandler<CreateClientCommand,
 
   public async Task<Result<ClientDetails>> Handle(CreateClientCommand request, CancellationToken ct)
   {
-    Client client = new(request.Name, request.Description, request.UserId)
-    { 
-      CreateStamp = new CreateStamp(request.UserId)
+    Client clientToAdd = new(request.Name, request.Description, request.UserId)
+    {
+      CreateStamp = new CreateStamp(request.UserId),
+      UpdateStamp = new UpdateStamp(null)
     };
 
-    await _clientRepository.AddAsync(client, ct);
+    await _clientRepository.AddAsync(clientToAdd, ct);
     await _clientRepository.SaveChangeAsync(ct);
-    var clientDetails = client.MapClientDetails();
+
+    var clientDetails = clientToAdd.MapClientDetails();
 
     return Result.Success(clientDetails);
   }
