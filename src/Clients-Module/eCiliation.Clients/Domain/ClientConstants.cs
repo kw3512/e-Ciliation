@@ -1,8 +1,6 @@
 ﻿
-using Azure.Core.Pipeline;
-
 namespace eCiliation.Clients.Domain;
-internal static class ClientConstants
+public static class ClientConstants
 {
   public const int DESCRIPTION_MIN = 2;
   public const int DESCRIPTION_MAX = 100;

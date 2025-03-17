@@ -1,23 +1,72 @@
+﻿using System.Diagnostics;
+using eCiliation.Clients.Infrastructure.Data;
+using eCiliation.Clients.Domain;
+using eCiliation.SharedKernel;
+using Microsoft.EntityFrameworkCore;
+
 namespace eCiliation.MigrationService;
 
-public class Worker : BackgroundService
+public class Worker(
+  IServiceProvider serviceProvider,
+    IHostApplicationLifetime hostApplicationLifetime) : BackgroundService
 {
-    private readonly ILogger<Worker> _logger;
+  public const string ActivitySourceName = "Clients Module Migrations";
+  private static readonly ActivitySource s_activitySource = new(ActivitySourceName);
 
-    public Worker(ILogger<Worker> logger)
+  protected override async Task ExecuteAsync(CancellationToken cancellationToken)
+  {
+    using var activity = s_activitySource.StartActivity("Migrating Clients database", ActivityKind.Client);
+
+    try
     {
-        _logger = logger;
+      using var scope = serviceProvider.CreateScope();
+      var dbContext = scope.ServiceProvider.GetRequiredService<ClientDbContext>();
+
+      await RunMigrationAsync(dbContext, cancellationToken);
+      await SeedDataAsync(dbContext, cancellationToken);
+    }
+    catch (Exception ex)
+    {
+      activity?.AddException(ex);
+      throw;
     }
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    hostApplicationLifetime.StopApplication();
+  }
+
+  private static async Task RunMigrationAsync(ClientDbContext dbContext, CancellationToken cancellationToken)
+  {
+    var strategy = dbContext.Database.CreateExecutionStrategy();
+    await strategy.ExecuteAsync(async () =>
     {
-        while (!stoppingToken.IsCancellationRequested)
-        {
-            if (_logger.IsEnabled(LogLevel.Information))
-            {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            }
-            await Task.Delay(1000, stoppingToken);
-        }
-    }
+      // Run migration in a transaction to avoid partial migration if it fails.
+      await dbContext.Database.MigrateAsync(cancellationToken);
+    });
+  }
+
+  private static async Task SeedDataAsync(ClientDbContext dbContext, CancellationToken cancellationToken)
+  {
+    List<Client> clients = new List<Client>() {
+      new Client("Client A", "Client A description...", "testUser")
+      {
+        CreateStamp = new CreateStamp("testUser"),
+        UpdateStamp = new UpdateStamp(null)
+      },
+      new Client("Client B", "Client B description...", "testUser")
+      {
+        CreateStamp = new CreateStamp("testUser"),
+        UpdateStamp = new UpdateStamp(null)
+      },
+    };
+
+    var strategy = dbContext.Database.CreateExecutionStrategy();
+    await strategy.ExecuteAsync(async () =>
+    {
+      // Seed the database
+      await using var transaction = await dbContext.Database.BeginTransactionAsync(cancellationToken);
+      await dbContext.AddRangeAsync(clients, cancellationToken);
+      await dbContext.SaveChangesAsync(cancellationToken);
+      await transaction.CommitAsync(cancellationToken);
+    });
+  }
 }

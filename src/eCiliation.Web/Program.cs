@@ -51,7 +51,7 @@ if (app.Environment.IsDevelopment())
 {
   app.MapOpenApi();
   app.MapScalarApiReference();
-  app.UseClientsModuleMiddleware();
+  //app.UseClientsModuleMiddleware(); Adding from Aspire Host app instead.
 }
 else
 {

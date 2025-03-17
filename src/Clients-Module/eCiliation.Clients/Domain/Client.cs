@@ -3,7 +3,7 @@ using eCiliation.SharedKernel;
 
 namespace eCiliation.Clients.Domain;
 
-internal class Client
+public class Client
 {
   private string _userId = string.Empty;
 
@@ -14,7 +14,7 @@ internal class Client
   public required CreateStamp CreateStamp { get; init; } 
   public required UpdateStamp UpdateStamp { get; set; }
 
-  public Client(string clientName, string description, string userId) 
+  public Client(string clientName, string description, string userId) : this()
   {
     Guard.Against.NullOrEmpty(clientName);
     Guard.Against.StringTooShort(clientName, ClientConstants.NAME_MIN);
@@ -28,10 +28,12 @@ internal class Client
     CreateStamp = new CreateStamp(_userId);
   }
 
-  private Client()
-  {
-    // EF 
-  }
+  public Client() { }
+
+  //private Client()
+  //{
+  //  // EF 
+  //}
 
   public void Deactivate()
   {
