@@ -4,14 +4,12 @@ namespace eCiliation.Web.Middleware;
 
 public static class ClientsModuleMiddlewareExtensions
 {
-  public static WebApplication UseClientsModuleMiddleware(this WebApplication app)
+  public static void UseClientsModuleMiddleware(this WebApplication app)
   {
     using (var scope = app.Services.CreateScope())
     {
       var context = scope.ServiceProvider.GetRequiredService<ClientDbContext>();
-      context.Database.EnsureCreatedAsync();
+      context.Database.EnsureCreated();
     }
-
-    return app;
   }
 }

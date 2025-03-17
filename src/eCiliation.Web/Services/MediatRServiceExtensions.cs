@@ -4,7 +4,7 @@ namespace eCiliation.Web.Services;
 
 public static class MediatRServiceExtensions
 {
-  public static WebApplicationBuilder AddMeiatRServices(
+  public static void AddMeiatRServices(
     this WebApplicationBuilder builder,
     List<Assembly> mediatRAssemblies)
   {
@@ -19,7 +19,5 @@ public static class MediatRServiceExtensions
     
     // Add MediatR Domain Event Dispatcher
     //builder.Services.AddScoped<IDomainEventDispatcher, MediatRDomainEventDispatcher>();
-
-    return builder;
   }
 }

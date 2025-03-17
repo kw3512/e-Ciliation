@@ -9,7 +9,7 @@ using Serilog;
 namespace eCiliation.Clients;
 public static class ClientsModuleServiceExtensions
 {
-  public static WebApplicationBuilder AddClientsModuleServices(
+  public static void AddClientsModuleServices(
     this WebApplicationBuilder builder,
     ILogger logger,
     List<System.Reflection.Assembly> mediatRAssemblies
@@ -23,6 +23,5 @@ public static class ClientsModuleServiceExtensions
     mediatRAssemblies.Add(typeof(ClientsModuleServiceExtensions).Assembly);
 
     logger.Information("{Module} module services registered", "Clients");
-    return builder;
   }
 }

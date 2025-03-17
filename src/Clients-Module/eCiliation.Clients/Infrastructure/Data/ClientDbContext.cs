@@ -23,30 +23,30 @@ public class ClientDbContext : DbContext
     modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
   }
 
-  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-  {
-    /*
-     When using this feature, it is recommended (by Microsoft) to 
-     implement both UseSeeding and UseAsyncSeeding methods using similar 
-     logic, even if the code using EF is asynchronous. EF Core tooling 
-     currently relies on the synchronous version of the method 
-     and will not seed the database correctly if the UseSeeding method 
-     is not implemented.
-     Hench, the reason for the duplication.
-    */
-    optionsBuilder
-      .UseSqlServer(_config.GetSection(
-        AppSettingsSectionConstants.CONNECTION_STRINGS_SECTION)
-        [ClientConstants.CLIENT_CONNECTION_STRING])
-      .UseSeeding((context, _) =>
-      {
-
-      });
-      //.UseAsyncSeeding(async (context, _, ct) =>
-      //{
-
-      //});
-  }
+  //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+  //{
+  //  /*
+  //   When using this feature, it is recommended (by Microsoft) to 
+  //   implement both UseSeeding and UseAsyncSeeding methods using similar 
+  //   logic, even if the code using EF is asynchronous. EF Core tooling 
+  //   currently relies on the synchronous version of the method 
+  //   and will not seed the database correctly if the UseSeeding method 
+  //   is not implemented.
+  //   Hench, the reason for the duplication.
+  //  */
+  //  optionsBuilder
+  //    .UseSqlServer(_config.GetSection(
+  //      AppSettingsSectionConstants.CONNECTION_STRINGS_SECTION)
+  //      [ClientConstants.CLIENT_CONNECTION_STRING])
+  //    .UseSeeding((context, _) =>
+  //    {
+  //       context.SaveChanges();
+  //    })
+  //  .UseAsyncSeeding(async (context, _, ct) =>
+  //  {
+  //    await context.SaveChangesAsync();
+  //  });
+  //}
 
   protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
   {

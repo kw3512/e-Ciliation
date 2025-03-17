@@ -1,4 +1,5 @@
 ﻿using FastEndpoints.Security;
+using Scalar.AspNetCore;
 
 // Serilog logger
 var logger = Log.Logger = new LoggerConfiguration()
@@ -18,9 +19,7 @@ builder.Services.AddFastEndpoints()
   {
     opt.SigningKey = "ThisIsASimplePlaceholderUntil_I_AddRealSecurity";
   })
-  .AddAuthorization()
-  .SwaggerDocument();
-
+  .AddAuthorization();
 
 // Add Module Services
 List<Assembly> mediatRAssemblies = [typeof(Program).Assembly];
@@ -51,15 +50,16 @@ app.UseFastEndpoints()
 if (app.Environment.IsDevelopment())
 {
   app.MapOpenApi();
+  app.MapScalarApiReference();
   app.UseClientsModuleMiddleware();
 }
 else
 {
-  // Not sure this is needed but adding for now just in case Aspire needs it.  Will review more.
   app.UseExceptionHandler("/Error", createScopeForErrors: true);
   app.UseHsts();
 }
 
+//app.MapGet("/home", () => "Hello world!");
 app.UseHttpsRedirection();
 
 app.Run();
