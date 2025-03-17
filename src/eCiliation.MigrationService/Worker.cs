@@ -23,6 +23,9 @@ public class Worker(
       var dbContext = scope.ServiceProvider.GetRequiredService<ClientDbContext>();
 
       await RunMigrationAsync(dbContext, cancellationToken);
+      // todo: Make this call meet the following 2 conditions:
+      // 1. ONLY run when in development environment
+      // 2. ONLY run when db does NOT have data
       await SeedDataAsync(dbContext, cancellationToken);
     }
     catch (Exception ex)
@@ -46,7 +49,7 @@ public class Worker(
 
   private static async Task SeedDataAsync(ClientDbContext dbContext, CancellationToken cancellationToken)
   {
-    List<Client> clients = new List<Client>() {
+    var clients = new List<Client>() {
       new Client("Client A", "Client A description...", "testUser")
       {
         CreateStamp = new CreateStamp("testUser"),
@@ -57,7 +60,7 @@ public class Worker(
         CreateStamp = new CreateStamp("testUser"),
         UpdateStamp = new UpdateStamp(null)
       },
-    };
+    }.OrderBy(c => c.Name).ToList();
 
     var strategy = dbContext.Database.CreateExecutionStrategy();
     await strategy.ExecuteAsync(async () =>
