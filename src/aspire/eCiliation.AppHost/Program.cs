@@ -1,4 +1,4 @@
-﻿using Aspire.Hosting;
+using Aspire.Hosting;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
@@ -10,5 +10,7 @@ var sql = builder.AddSqlServer("sqlServer-2022")
 builder.AddProject<Projects.eCiliation_Web>("eciliation-web")
   .WithReference(sql)
   .WaitFor(sql);
+
+builder.AddProject<Projects.eCiliation_MigrationService>("eciliation-migrationservice");
 
 builder.Build().Run();
