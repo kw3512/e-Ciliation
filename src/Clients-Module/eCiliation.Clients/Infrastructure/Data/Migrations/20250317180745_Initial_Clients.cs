@@ -3,43 +3,42 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace eCiliation.Clients.Infrastructure.Data.Migrations
-{
-    /// <inheritdoc />
-    public partial class Initial_Clients : Migration
-    {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.EnsureSchema(
-                name: "Clients");
+namespace eCiliation.Clients.Infrastructure.Data.Migrations;
 
-            migrationBuilder.CreateTable(
-                name: "Clients",
-                schema: "Clients",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clients", x => x.Id);
-                });
-        }
+  /// <inheritdoc />
+  public partial class Initial_Clients : Migration
+  {
+      /// <inheritdoc />
+      protected override void Up(MigrationBuilder migrationBuilder)
+      {
+          migrationBuilder.EnsureSchema(
+              name: "Clients");
 
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "Clients",
-                schema: "Clients");
-        }
-    }
-}
+          migrationBuilder.CreateTable(
+              name: "Clients",
+              schema: "Clients",
+              columns: table => new
+              {
+                  Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                  Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                  Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                  IsActive = table.Column<bool>(type: "bit", nullable: false),
+                  CreatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                  CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                  UpdatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                  UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+              },
+              constraints: table =>
+              {
+                  table.PrimaryKey("PK_Clients", x => x.Id);
+              });
+      }
+
+      /// <inheritdoc />
+      protected override void Down(MigrationBuilder migrationBuilder)
+      {
+          migrationBuilder.DropTable(
+              name: "Clients",
+              schema: "Clients");
+      }
+  }

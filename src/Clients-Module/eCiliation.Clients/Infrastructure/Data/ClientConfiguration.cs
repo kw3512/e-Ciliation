@@ -21,12 +21,12 @@ internal class ClientConfiguration : IEntityTypeConfiguration<Client>
       .HasColumnName("CreatedOn");
     });
 
-    builder.ComplexProperty(u => u.UpdateStamp, updateStatmp =>
+    builder.ComplexProperty(u => u.UpdateStamp, updateStamp =>
     {
-      updateStatmp.IsRequired(true);
-      updateStatmp.Property(x => x.UpdatedOn)
+      updateStamp.IsRequired();
+      updateStamp.Property(x => x.UpdatedOn)
       .HasColumnName("UpdatedOn");
-      updateStatmp.Property(x => x.UpdatedBy)
+      updateStamp.Property(x => x.UpdatedBy)
       .HasMaxLength(50)
       .HasColumnName("UpdatedBy");
     });

@@ -12,7 +12,7 @@ public class Client
   public string Description { get; set; } = string.Empty;
   public bool IsActive { get; private set; } = true;
   public required CreateStamp CreateStamp { get; init; } 
-  public required UpdateStamp UpdateStamp { get; set; }
+  public UpdateStamp? UpdateStamp { get; set; }
 
   public Client(string clientName, string description, string userId) : this()
   {
@@ -29,11 +29,6 @@ public class Client
   }
 
   public Client() { }
-
-  //private Client()
-  //{
-  //  // EF 
-  //}
 
   public void Deactivate()
   {

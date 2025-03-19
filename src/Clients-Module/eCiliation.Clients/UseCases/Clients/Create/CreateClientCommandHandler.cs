@@ -19,8 +19,7 @@ internal class CreateClientCommandHandler : IRequestHandler<CreateClientCommand,
   {
     Client clientToAdd = new(request.Name, request.Description, request.UserId)
     {
-      CreateStamp = new CreateStamp(request.UserId),
-      UpdateStamp = new UpdateStamp(null)
+      CreateStamp = new CreateStamp(request.UserId)
     };
 
     await _clientRepository.AddAsync(clientToAdd, ct);

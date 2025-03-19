@@ -53,12 +53,12 @@ public class Worker(
       new Client("Client A", "Client A description...", "testUser")
       {
         CreateStamp = new CreateStamp("testUser"),
-        UpdateStamp = new UpdateStamp(null)
+        UpdateStamp = new()
       },
       new Client("Client B", "Client B description...", "testUser")
       {
         CreateStamp = new CreateStamp("testUser"),
-        UpdateStamp = new UpdateStamp(null)
+        UpdateStamp = new UpdateStamp("testUser")
       },
     }.OrderBy(c => c.Name).ToList();
 

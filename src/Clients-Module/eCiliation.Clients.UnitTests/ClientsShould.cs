@@ -13,8 +13,7 @@ public class ClientsShould
 
   private readonly Client _sut = new(_clientName, _description, _userId)
   {
-    CreateStamp = new CreateStamp(_userId),
-    UpdateStamp = new UpdateStamp(null)
+    CreateStamp = new CreateStamp(_userId)    
   };
 
   [Fact]

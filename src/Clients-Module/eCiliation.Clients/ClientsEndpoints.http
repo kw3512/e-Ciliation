@@ -19,7 +19,7 @@ POST {{host}}:{{port}}/clients
 Content-Type: application/json
 
 {
-  "name": "E",
+  "name": "Client E",
   "description": "Client E Description",
   "userId": "kwilliams"
 }

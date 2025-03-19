@@ -9,71 +9,70 @@ using eCiliation.Clients.Infrastructure.Data;
 
 #nullable disable
 
-namespace eCiliation.Clients.Infrastructure.Data.Migrations
-{
-    [DbContext(typeof(ClientDbContext))]
-    partial class ClientDbContextModelSnapshot : ModelSnapshot
-    {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
+namespace eCiliation.Clients.Infrastructure.Data.Migrations;
+
+  [DbContext(typeof(ClientDbContext))]
+  partial class ClientDbContextModelSnapshot : ModelSnapshot
+  {
+      protected override void BuildModel(ModelBuilder modelBuilder)
+      {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasDefaultSchema("Clients")
-                .HasAnnotation("ProductVersion", "9.0.3")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+          modelBuilder
+              .HasDefaultSchema("Clients")
+              .HasAnnotation("ProductVersion", "9.0.3")
+              .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+          SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("eCiliation.Clients.Domain.Client", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+          modelBuilder.Entity("eCiliation.Clients.Domain.Client", b =>
+              {
+                  b.Property<Guid>("Id")
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                  b.Property<string>("Description")
+                      .IsRequired()
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                  b.Property<bool>("IsActive")
+                      .HasColumnType("bit");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                  b.Property<string>("Name")
+                      .IsRequired()
+                      .HasColumnType("nvarchar(max)");
 
-                    b.ComplexProperty<Dictionary<string, object>>("CreateStamp", "eCiliation.Clients.Domain.Client.CreateStamp#CreateStamp", b1 =>
-                        {
-                            b1.IsRequired();
+                  b.ComplexProperty<Dictionary<string, object>>("CreateStamp", "eCiliation.Clients.Domain.Client.CreateStamp#CreateStamp", b1 =>
+                      {
+                          b1.IsRequired();
 
-                            b1.Property<string>("CreatedBy")
-                                .IsRequired()
-                                .HasMaxLength(50)
-                                .HasColumnType("nvarchar(50)")
-                                .HasColumnName("CreatedBy");
+                          b1.Property<string>("CreatedBy")
+                              .IsRequired()
+                              .HasMaxLength(50)
+                              .HasColumnType("nvarchar(50)")
+                              .HasColumnName("CreatedBy");
 
-                            b1.Property<DateTime>("CreatedOn")
-                                .HasColumnType("datetime2")
-                                .HasColumnName("CreatedOn");
-                        });
+                          b1.Property<DateTime>("CreatedOn")
+                              .HasColumnType("datetime2")
+                              .HasColumnName("CreatedOn");
+                      });
 
-                    b.ComplexProperty<Dictionary<string, object>>("UpdateStamp", "eCiliation.Clients.Domain.Client.UpdateStamp#UpdateStamp", b1 =>
-                        {
-                            b1.IsRequired();
+                  b.ComplexProperty<Dictionary<string, object>>("UpdateStamp", "eCiliation.Clients.Domain.Client.UpdateStamp#UpdateStamp", b1 =>
+                      {
+                          b1.IsRequired();
 
-                            b1.Property<string>("UpdatedBy")
-                                .HasMaxLength(50)
-                                .HasColumnType("nvarchar(50)")
-                                .HasColumnName("UpdatedBy");
+                          b1.Property<string>("UpdatedBy")
+                              .HasMaxLength(50)
+                              .HasColumnType("nvarchar(50)")
+                              .HasColumnName("UpdatedBy");
 
-                            b1.Property<DateTime?>("UpdatedOn")
-                                .HasColumnType("datetime2")
-                                .HasColumnName("UpdatedOn");
-                        });
+                          b1.Property<DateTime?>("UpdatedOn")
+                              .HasColumnType("datetime2")
+                              .HasColumnName("UpdatedOn");
+                      });
 
-                    b.HasKey("Id");
+                  b.HasKey("Id");
 
-                    b.ToTable("Clients", "Clients");
-                });
+                  b.ToTable("Clients", "Clients");
+              });
 #pragma warning restore 612, 618
-        }
-    }
-}
+      }
+  }
