@@ -25,10 +25,10 @@ public class FluentValidationBehavior<TRequest, TResponse> :
 
       var validationResults = await Task.WhenAll(_validators.Select(v => v.ValidateAsync(context, cancellationToken)));
       var resultErrors = validationResults.SelectMany(r => r.AsErrors()).ToList();
-      var failures = validationResults.SelectMany(r => r.Errors).Where(f => f != null).ToList();
+      var failures = validationResults.SelectMany(r => r.Errors).Where(f => f is not null).ToList();
 
 #nullable disable
-      if (failures.Count != 0)
+      if (failures.Count is not 0)
       {
         if (typeof(TResponse).IsGenericType && typeof(TResponse).GetGenericTypeDefinition() == typeof(Result<>))
         {
@@ -37,7 +37,7 @@ public class FluentValidationBehavior<TRequest, TResponse> :
               .MakeGenericType(resultType)
               .GetMethod(nameof(Result<int>.Invalid), new[] { typeof(List<ValidationError>) });
 
-          if (invalidMethod != null)
+          if (invalidMethod is not null)
           {
             return (TResponse)invalidMethod.Invoke(null, new object[] { resultErrors });
           }

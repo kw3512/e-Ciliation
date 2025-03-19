@@ -61,7 +61,7 @@ public class ClientDbContext : DbContext
 //        .UseSeeding((context, _) =>
 //        {
 //          var testBlog = context.Set<Blog>().FirstOrDefault(b => b.Url == "http://test.com");
-//          if (testBlog == null)
+//          if (testBlog is null)
 //          {
 //            context.Set<Blog>().Add(new Blog { Url = "http://test.com" });
 //            context.SaveChanges();
@@ -70,7 +70,7 @@ public class ClientDbContext : DbContext
 //        .UseAsyncSeeding(async (context, _, cancellationToken) =>
 //        {
 //          var testBlog = await context.Set<Blog>().FirstOrDefaultAsync(b => b.Url == "http://test.com", cancellationToken);
-//          if (testBlog == null)
+//          if (testBlog is null)
 //          {
 //            context.Set<Blog>().Add(new Blog { Url = "http://test.com" });
 //            await context.SaveChangesAsync(cancellationToken);

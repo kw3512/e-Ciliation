@@ -8,7 +8,7 @@ public class UpdateStamp
 
   public UpdateStamp(string? updatedBy)
   {
-    if (updatedBy != null)
+    if (updatedBy is not null)
     {
       UpdatedBy = Guard.Against.NullOrEmpty(updatedBy);
       UpdatedOn = DateTime.Now;

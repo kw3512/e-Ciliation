@@ -53,14 +53,11 @@ if (app.Environment.IsDevelopment())
   app.MapScalarApiReference();
   //app.UseClientsModuleMiddleware(); //Adding from Aspire Host app instead.
 }
-else
-{
-  app.UseExceptionHandler("/Error", createScopeForErrors: true);
-  app.UseHsts();
-}
 
-//app.MapGet("/home", () => "Hello world!");
 app.UseHttpsRedirection();
 
 app.Run();
+
+public partial class Program { }; // for integration tests
+
 

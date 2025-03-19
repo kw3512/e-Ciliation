@@ -22,7 +22,7 @@ internal class UpdateClientCommandHandler : IRequestHandler<UpdateClientCommand,
   {
     var clientToUpdate = await _clientRepository.GetByIdAsync(request.Id, ct);
 
-    if (clientToUpdate == null)
+    if (clientToUpdate is null)
     {
       return Result.NotFound();
     }

@@ -32,11 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7E3FA566
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.MigrationService", "src\eCiliation.MigrationService\eCiliation.MigrationService.csproj", "{F5676134-91D7-B223-56DC-F2F3B12B492C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.Clients.IntegrationTests", "src\Clients-Module\eCiliation.Clients.IntegrationTests\eCiliation.Clients.IntegrationTests.csproj", "{1A7D692F-8BE9-4210-A9D4-1E36D9E2A44A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clients.AppToTest.IntegrationTests", "src\Clients-Module\Clients.AppToTest.IntegrationTests\Clients.AppToTest.IntegrationTests.csproj", "{8B5E2CC0-E417-4074-9FB7-5CC698287354}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTests", "IntegrationTests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.Clients.IntegrationTests", "src\Clients-Module\eCiliation.Clients.IntegrationTests\eCiliation.Clients.IntegrationTests.csproj", "{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,14 +72,10 @@ Global
 		{F5676134-91D7-B223-56DC-F2F3B12B492C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5676134-91D7-B223-56DC-F2F3B12B492C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5676134-91D7-B223-56DC-F2F3B12B492C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A7D692F-8BE9-4210-A9D4-1E36D9E2A44A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A7D692F-8BE9-4210-A9D4-1E36D9E2A44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A7D692F-8BE9-4210-A9D4-1E36D9E2A44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A7D692F-8BE9-4210-A9D4-1E36D9E2A44A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B5E2CC0-E417-4074-9FB7-5CC698287354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B5E2CC0-E417-4074-9FB7-5CC698287354}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B5E2CC0-E417-4074-9FB7-5CC698287354}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B5E2CC0-E417-4074-9FB7-5CC698287354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,9 +88,7 @@ Global
 		{5EA7464D-7474-4B19-8A90-3F73834DE5A6} = {7E3FA566-E6CD-4D8F-ABFA-5FF786F9D7CF}
 		{7E3FA566-E6CD-4D8F-ABFA-5FF786F9D7CF} = {684C49C9-F7B9-4E05-9F60-97D039284DEA}
 		{F5676134-91D7-B223-56DC-F2F3B12B492C} = {684C49C9-F7B9-4E05-9F60-97D039284DEA}
-		{1A7D692F-8BE9-4210-A9D4-1E36D9E2A44A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{8B5E2CC0-E417-4074-9FB7-5CC698287354} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {7E3FA566-E6CD-4D8F-ABFA-5FF786F9D7CF}
+		{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE} = {7E3FA566-E6CD-4D8F-ABFA-5FF786F9D7CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {793BB49A-A9FC-4608-87D3-6212AEE4FE4C}

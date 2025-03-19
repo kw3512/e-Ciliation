@@ -7,7 +7,7 @@ public static class DeactivationExtensions
   public static bool Deactivation(this IGuardClause guardClause,
     bool isCurrentlyActive)
   {   
-    if (isCurrentlyActive == false)
+    if (isCurrentlyActive is false)
       throw new ArgumentException("Already inactive.");
 
     return false;

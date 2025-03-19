@@ -19,7 +19,7 @@ internal class ListClientsQueryHandler : IRequestHandler<ListClientsQuery, Resul
   {
     var clients = await _clientRepository.ListAsync(ct);
 
-    if (clients == null)
+    if (clients is null)
       return Result.NotFound();
 
     var clientSummaries = clients.MapClientSummaries();

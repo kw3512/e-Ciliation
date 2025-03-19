@@ -19,7 +19,7 @@ internal class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, R
   {
     var client = await _clientRepository.GetByIdAsync(request.Id, ct);
 
-    if (client == null)
+    if (client is null)
       return Result.NotFound();
 
     var clientDetails = client.MapClientDetails();

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace Clients.AppToTest.IntegrationTests;
+namespace eCiliation.Clients.IntegrationTests;
 
-public class CustomWebApplicationFactory<TProgram>:
+public class CustomWebApplicationFactory<TProgram> :
   WebApplicationFactory<TProgram> where TProgram : class
 {
-
 }
+

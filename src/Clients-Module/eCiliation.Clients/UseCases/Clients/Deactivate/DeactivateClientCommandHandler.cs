@@ -18,7 +18,7 @@ internal class DeactivateClientCommandHandler : IRequestHandler<DeactivateClient
   {
     var clientToDeactivate = await _clientRepository.GetByIdAsync(request.Id, ct);
 
-    if (clientToDeactivate == null)
+    if (clientToDeactivate is null)
       return Result.NotFound();
 
     clientToDeactivate!.Deactivate();

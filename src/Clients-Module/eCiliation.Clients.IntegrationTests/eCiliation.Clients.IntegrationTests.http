@@ -1,6 +1,0 @@
-@eCiliation.Clients.IntegrationTests_HostAddress = http://localhost:5126
-
-GET {{eCiliation.Clients.IntegrationTests_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
