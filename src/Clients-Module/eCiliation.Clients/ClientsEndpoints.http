@@ -8,8 +8,7 @@ GET {{host}}:{{port}}/clients
 ###
 
 // Get a specific client
-//@id_to_get=a89f6cd7-4693-457b-9009-02205dbbfe45
-@id_to_get=c8fb3fa2-8142-43e7-b97d-a21cd63f1190
+@id_to_get=3910d433-23e6-4b31-aa3e-74965a1c3926
 GET {{host}}:{{port}}/clients/{{id_to_get}}
 Accept: application/json
 
@@ -20,8 +19,8 @@ POST {{host}}:{{port}}/clients
 Content-Type: application/json
 
 {
-  "name": "Client B",
-  "description": "Client B Description",
+  "name": "E",
+  "description": "Client E Description",
   "userId": "kwilliams"
 }
 

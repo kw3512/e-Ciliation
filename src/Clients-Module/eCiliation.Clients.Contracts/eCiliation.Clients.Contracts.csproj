@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FastEndpoints" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\eCiliation.SharedKernel\eCiliation.SharedKernel\eCiliation.SharedKernel.csproj" />
   </ItemGroup>
 

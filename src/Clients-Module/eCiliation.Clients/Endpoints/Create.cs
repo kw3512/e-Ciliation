@@ -14,7 +14,7 @@ internal class Create : Endpoint<CreateClientRequest, CreateClientResponse>
 
   public override void Configure()
   {
-    Post("/clients");
+    Post("/clients");   
     AllowAnonymous();
   }
 
