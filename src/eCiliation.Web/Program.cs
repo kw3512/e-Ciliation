@@ -54,7 +54,7 @@ if (app.Environment.IsDevelopment())
   //app.UseClientsModuleMiddleware(); //Adding from Aspire Host app instead.
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.Run();
 

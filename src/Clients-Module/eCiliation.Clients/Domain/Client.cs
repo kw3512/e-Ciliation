@@ -7,7 +7,7 @@ public class Client
 {
   private string _userId = string.Empty;
 
-  public Guid Id { get; private set; } = Guid.NewGuid();
+  public Guid Id { get; private set; } 
   public string Name { get; set; } = string.Empty;
   public string Description { get; set; } = string.Empty;
   public bool IsActive { get; private set; } = true;
@@ -16,6 +16,7 @@ public class Client
 
   public Client(string clientName, string description, string userId) : this()
   {
+    SetClientId();
     Guard.Against.NullOrEmpty(clientName);
     Guard.Against.StringTooShort(clientName, ClientConstants.NAME_MIN);
     Guard.Against.StringTooLong(clientName, ClientConstants.NAME_MAX);
@@ -44,5 +45,15 @@ public class Client
   public void SetUserId(string userId)
   {
     _userId = Guard.Against.NullOrEmpty(userId);
+  }
+
+  public void SetClientId()
+  {
+    Id = Guid.NewGuid();
+  }
+
+  public void SetClientId(Guid id) // Override is for integration testing
+  {
+    Id = Guard.Against.Default(id);
   }
 }
