@@ -11,6 +11,8 @@ logger.Information("Starting web host");
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddProblemDetails();
+
 builder.Host.UseSerilog((_, config) =>
   config.ReadFrom.Configuration(builder.Configuration));
 
@@ -53,9 +55,12 @@ if (app.Environment.IsDevelopment())
   app.MapScalarApiReference();
   //app.UseClientsModuleMiddleware(); //Adding from Aspire Host app instead.
 }
+else
+{
+  app.UseExceptionHandler();
+}
 
 //app.UseHttpsRedirection();
-
 app.Run();
 
 public partial class Program { }; // for integration tests

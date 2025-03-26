@@ -1,16 +1,17 @@
 ﻿var builder = DistributedApplication.CreateBuilder(args);
 
-var sql = builder.AddSqlServer("sqlServer2022")
+var sql = builder.AddSqlServer("sql")
   .WithDataVolume()
   .WithLifetime(ContainerLifetime.Persistent)
   .AddDatabase("eCiliation");
 
-builder.AddProject<Projects.eCiliation_Web>("eciliation-web")
+var clientMigration = builder.AddProject<Projects.eCiliation_MigrationService>("clients-module-migration-service")
   .WithReference(sql)
   .WaitFor(sql);
 
-builder.AddProject<Projects.eCiliation_MigrationService>("clients-module-migration-service")
+builder.AddProject<Projects.eCiliation_Web>("eCiliation-api")
   .WithReference(sql)
-  .WaitFor(sql);
+  .WaitFor(sql)
+  .WaitForCompletion(clientMigration);
 
 builder.Build().Run();

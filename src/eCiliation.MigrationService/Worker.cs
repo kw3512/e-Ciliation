@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using eCiliation.Clients.Infrastructure.Data;
 using eCiliation.Clients.Domain;
-using eCiliation.SharedKernel;
 using Microsoft.EntityFrameworkCore;
 
 namespace eCiliation.MigrationService;
@@ -12,6 +11,7 @@ public class Worker(
 {
   public const string ActivitySourceName = "Clients Module Migrations";
   private static readonly ActivitySource s_activitySource = new(ActivitySourceName);
+  public const string DEVELOPMENT_ENVIRONMENT = "Development";
 
   protected override async Task ExecuteAsync(CancellationToken cancellationToken)
   {
@@ -23,10 +23,10 @@ public class Worker(
       var dbContext = scope.ServiceProvider.GetRequiredService<ClientDbContext>();
 
       await RunMigrationAsync(dbContext, cancellationToken);
-      // todo: Make this call meet the following 2 conditions:
-      // 1. ONLY run when in development environment
-      // 2. ONLY run when db does NOT have data
-      await SeedDataAsync(dbContext, cancellationToken);
+
+      var currentEnvironment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
+      if (currentEnvironment == DEVELOPMENT_ENVIRONMENT)
+        await SeedDataAsync(dbContext, cancellationToken);
     }
     catch (Exception ex)
     {
@@ -49,18 +49,11 @@ public class Worker(
 
   private static async Task SeedDataAsync(ClientDbContext dbContext, CancellationToken cancellationToken)
   {
-    var clients = new List<Client>() {
-      new Client("Client A", "Client A description...", "testUser")
-      {
-        CreateStamp = new CreateStamp("testUser"),
-        UpdateStamp = new()
-      },
-      new Client("Client B", "Client B description...", "testUser")
-      {
-        CreateStamp = new CreateStamp("testUser"),
-        UpdateStamp = new UpdateStamp("testUser")
-      },
-    }.OrderBy(c => c.Name).ToList();
+    var isSeeded = dbContext.Set<Client>().Any();
+    if (isSeeded)
+      return;
+
+    var clients = ClientModelBuilder.GetClients();
 
     var strategy = dbContext.Database.CreateExecutionStrategy();
     await strategy.ExecuteAsync(async () =>
@@ -71,5 +64,5 @@ public class Worker(
       await dbContext.SaveChangesAsync(cancellationToken);
       await transaction.CommitAsync(cancellationToken);
     });
-  }
+  }  
 }
