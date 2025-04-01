@@ -9,9 +9,12 @@ var clientMigration = builder.AddProject<Projects.eCiliation_MigrationService>("
   .WithReference(sql)
   .WaitFor(sql);
 
-builder.AddProject<Projects.eCiliation_Web>("eCiliation-api")
+var api = builder.AddProject<Projects.eCiliation_Web>("eCiliation-api")
   .WithReference(sql)
   .WaitFor(sql)
   .WaitForCompletion(clientMigration);
+
+builder.AddProject<Projects.eCiliation_Blazor_Frontend>("eciliation-blazor-frontend")
+  .WaitFor(api);
 
 builder.Build().Run();

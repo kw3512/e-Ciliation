@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\eCiliation.Blazor.Frontend\eCiliation.Blazor.Frontend\eCiliation.Blazor.Frontend.csproj" />
     <ProjectReference Include="..\..\eCiliation.MigrationService\eCiliation.MigrationService.csproj" />
     <ProjectReference Include="..\..\eCiliation.Web\eCiliation.Web.csproj" />
   </ItemGroup>

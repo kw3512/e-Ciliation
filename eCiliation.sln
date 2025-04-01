@@ -34,6 +34,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.MigrationService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.Clients.IntegrationTests", "src\Clients-Module\eCiliation.Clients.IntegrationTests\eCiliation.Clients.IntegrationTests.csproj", "{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users Module", "Users Module", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.Users", "src\Users-Module\eCiliation.Users\eCiliation.Users.csproj", "{1BD8BE96-1721-4AD8-8B6F-74B8F1DAAAA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.Users.Contracts", "src\Users-Module\eCiliation.Users.Contracts\eCiliation.Users.Contracts.csproj", "{695E479C-089F-4644-B84C-882D6BF07146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.Blazor.Frontend", "src\eCiliation.Blazor.Frontend\eCiliation.Blazor.Frontend\eCiliation.Blazor.Frontend.csproj", "{75E45411-7840-179E-24CF-046F86515B67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCiliation.Blazor.Frontend.Client", "src\eCiliation.Blazor.Frontend\eCiliation.Blazor.Frontend.Client\eCiliation.Blazor.Frontend.Client.csproj", "{4C7FF9B0-882E-6B0D-53B8-689C5B0ED77F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{37E041E0-4068-4354-AEE4-CC49AFB8D6B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +88,22 @@ Global
 		{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BD8BE96-1721-4AD8-8B6F-74B8F1DAAAA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BD8BE96-1721-4AD8-8B6F-74B8F1DAAAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BD8BE96-1721-4AD8-8B6F-74B8F1DAAAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BD8BE96-1721-4AD8-8B6F-74B8F1DAAAA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{695E479C-089F-4644-B84C-882D6BF07146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{695E479C-089F-4644-B84C-882D6BF07146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{695E479C-089F-4644-B84C-882D6BF07146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{695E479C-089F-4644-B84C-882D6BF07146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75E45411-7840-179E-24CF-046F86515B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75E45411-7840-179E-24CF-046F86515B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75E45411-7840-179E-24CF-046F86515B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75E45411-7840-179E-24CF-046F86515B67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C7FF9B0-882E-6B0D-53B8-689C5B0ED77F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C7FF9B0-882E-6B0D-53B8-689C5B0ED77F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C7FF9B0-882E-6B0D-53B8-689C5B0ED77F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C7FF9B0-882E-6B0D-53B8-689C5B0ED77F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +117,10 @@ Global
 		{7E3FA566-E6CD-4D8F-ABFA-5FF786F9D7CF} = {684C49C9-F7B9-4E05-9F60-97D039284DEA}
 		{F5676134-91D7-B223-56DC-F2F3B12B492C} = {684C49C9-F7B9-4E05-9F60-97D039284DEA}
 		{6C0F9331-4113-4E2D-A1B2-4D6EC5EEEDAE} = {7E3FA566-E6CD-4D8F-ABFA-5FF786F9D7CF}
+		{1BD8BE96-1721-4AD8-8B6F-74B8F1DAAAA4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{695E479C-089F-4644-B84C-882D6BF07146} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{75E45411-7840-179E-24CF-046F86515B67} = {37E041E0-4068-4354-AEE4-CC49AFB8D6B0}
+		{4C7FF9B0-882E-6B0D-53B8-689C5B0ED77F} = {37E041E0-4068-4354-AEE4-CC49AFB8D6B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {793BB49A-A9FC-4608-87D3-6212AEE4FE4C}
